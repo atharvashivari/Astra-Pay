@@ -1,22 +1,22 @@
-# Tech Stack Document: Astra-Pay
+# Architectural Tech Stack: Astra-Pay
 
-## 1. Backend (The Engine)
-* **Framework:** Spring Boot 3.x (Java 17/21) — Chosen for enterprise stability and native Kafka support.
-* **Database:** PostgreSQL — Ensuring ACID compliance for all financial data.
-* **Caching:** Redis — Used for session management and distributed locking for transaction integrity.
-* **Messaging:** Apache Kafka — Decouples the Transaction Service from the Incentive and Notification services.
+## 1. Backend Infrastructure
+* **Framework:** Spring Boot 3.x (Java 21) — Selected for enterprise-grade scalability, virtual threads, and seamless Kafka integration.
+* **Database:** PostgreSQL — Guaranteeing ACID compliance and relational integrity for core financial records.
+* **Caching & Distributed Locks:** Redis — Employed for strict idempotency enforcement and high-performance session management.
+* **Event Streaming:** Apache Kafka — Facilitating asynchronous microservice decoupling and high-throughput transaction auditing.
 
-## 2. Frontend (The Interface)
-* **Framework:** React — Fast, component-based UI for the dashboard.
-* **Styling:** Tailwind CSS — For a minimalist, dark mode design.
-* **State Management:** TanStack Query (React Query) — Efficiently syncing the Activity Feed with the backend.
+## 2. Frontend Architecture
+* **Framework:** React — Delivering a highly responsive, component-driven user interface.
+* **Styling:** Tailwind CSS — Enabling a clean, modern, and highly maintainable design system.
+* **State Management:** TanStack Query (React Query) — Optimizing server-state synchronization and caching for real-time financial feeds.
 
-## 3. Developer Tools (The Workflow)
-* **IDE:** Antigravity — Leveraging Google’s agent-first environment.
-* **OS Environment:** WSL2 (Ubuntu) — Running a clean Linux kernel for high-performance Docker and Kafka instances.
-* **Testing:** JUnit 5 & Mockito — Ensuring 80%+ code coverage for the core ledger logic.
-* **Code Review:** CodeRabbit AI — Automated bug detection and performance auditing before every push.
+## 3. DevOps & Quality Engineering
+* **IDE & Agent Tools:** Antigravity — Utilizing an agent-first environment for rapid, AI-assisted development and system architecture design.
+* **Containerization OS:** WSL2 (Ubuntu) — Providing a robust Linux ecosystem for container orchestration and Kafka/Redis instances.
+* **Testing Suite:** JUnit 5 & Mockito — Enforcing strict code coverage thresholds for mission-critical ledger operations.
+* **Continuous Inspection:** CodeRabbit AI — Automating static analysis and security vulnerability detection during the CI pipeline.
 
-## 4. Authentication & Security
-* **Auth:** Spring Security + JWT — Handling secure stateless sessions.
-* **Validation:** Hibernate Validator — Strict schema enforcement for all incoming transaction JSONs.
+## 4. Security & Compliance
+* **Authentication:** Spring Security + JWT — Architecting secure, stateless authorization mechanisms.
+* **Input Validation:** Hibernate Validator — Enforcing stringent payload validation against malicious or malformed transaction models.
