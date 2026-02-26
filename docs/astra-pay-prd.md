@@ -1,7 +1,7 @@
 # Product Requirement Document (PRD): Astra-Pay
 
 ## 1. Executive Summary
-**Astra-Pay** is a high-performance, event-driven financial ledger and P2P payment system. It is designed to demonstrate "Senior-Level" architectural competence for 15+ LPA roles, focusing on high concurrency, idempotency, and asynchronous processing.
+**Astra-Pay** is a high-performance, event-driven financial ledger and P2P payment system. It is designed to demonstrate  architectural, focusing on high concurrency, idempotency, and asynchronous processing.
 
 ## 2. Problem Statement
 Most traditional payment apps suffer from:

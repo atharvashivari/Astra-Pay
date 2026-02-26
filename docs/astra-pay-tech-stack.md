@@ -8,11 +8,11 @@
 
 ## 2. Frontend (The Interface)
 * **Framework:** React — Fast, component-based UI for the dashboard.
-* **Styling:** Tailwind CSS — For a minimalist, "Fintech-Chic" dark mode design.
+* **Styling:** Tailwind CSS — For a minimalist, dark mode design.
 * **State Management:** TanStack Query (React Query) — Efficiently syncing the Activity Feed with the backend.
 
 ## 3. Developer Tools (The Workflow)
-* **IDE:** Antigravity — Leveraging Google’s agent-first environment for rapid "Vibe Coding".
+* **IDE:** Antigravity — Leveraging Google’s agent-first environment.
 * **OS Environment:** WSL2 (Ubuntu) — Running a clean Linux kernel for high-performance Docker and Kafka instances.
 * **Testing:** JUnit 5 & Mockito — Ensuring 80%+ code coverage for the core ledger logic.
 * **Code Review:** CodeRabbit AI — Automated bug detection and performance auditing before every push.
