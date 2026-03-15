@@ -56,3 +56,9 @@ Astra-Pay utilizes modern architectural patterns to ensure high availability and
 - JWT-based stateless authentication.
 - Hibernate Validator for stringent payload checks.
 - Redis-based distributed locks for concurrent critical sections.
+
+## 🌟 Key Highlights
+- **Atomic Transfers**: Guaranteed state consistency using Spring Data JPA and Postgres ACID transactions.
+- **Race Condition Immunity**: Implements version-based Optimistic Locking on all wallet operations.
+- **Idempotency Shield**: Custom Redis-backed middleware ensuring no transaction is processed twice.
+- **Loom Powered**: Utilizes Virtual Threads to handle thousands of concurrent payment requests with minimal overhead.
