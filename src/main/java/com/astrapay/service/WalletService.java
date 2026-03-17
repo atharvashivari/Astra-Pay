@@ -1,6 +1,8 @@
 package com.astrapay.service;
 
+import com.astrapay.exception.AccountNotFoundException;
 import com.astrapay.exception.DuplicateTransactionException;
+import com.astrapay.exception.InsufficientFundsException;
 import com.astrapay.model.Account;
 import com.astrapay.repository.AccountRepository;
 import lombok.RequiredArgsConstructor;
@@ -41,8 +43,9 @@ public class WalletService {
      * @param amount         positive amount to transfer
      * @param idempotencyKey unique client-supplied key to prevent duplicate submissions
      * @throws DuplicateTransactionException if the idempotency key already exists in Redis
-     * @throws IllegalArgumentException      if an account is not found, is not ACTIVE,
-     *                                       or the sender has insufficient funds
+     * @throws AccountNotFoundException      if an account is not found
+     * @throws InsufficientFundsException   if the sender has insufficient funds
+     * @throws IllegalStateException         if an account is not ACTIVE
      */
     @Transactional
     public void transferFunds(String fromWallet,
@@ -64,11 +67,11 @@ public class WalletService {
         String secondLock = fromWallet.compareTo(toWallet) <= 0 ? toWallet   : fromWallet;
 
         Account firstAccount = accountRepository.findWithLockByWalletAddress(firstLock)
-                .orElseThrow(() -> new IllegalArgumentException(
+                .orElseThrow(() -> new AccountNotFoundException(
                         "Account not found for wallet address: " + firstLock));
 
         Account secondAccount = accountRepository.findWithLockByWalletAddress(secondLock)
-                .orElseThrow(() -> new IllegalArgumentException(
+                .orElseThrow(() -> new AccountNotFoundException(
                         "Account not found for wallet address: " + secondLock));
 
         // Restore canonical from/to references after lock acquisition
@@ -77,19 +80,19 @@ public class WalletService {
 
         // ── Step 3: Validate account status ───────────────────────────────────────
         if (fromAccount.getStatus() != Account.Status.ACTIVE) {
-            throw new IllegalArgumentException(
+            throw new IllegalStateException(
                     "Sender account '" + fromWallet + "' is not active (current status: "
                     + fromAccount.getStatus() + ").");
         }
         if (toAccount.getStatus() != Account.Status.ACTIVE) {
-            throw new IllegalArgumentException(
+            throw new IllegalStateException(
                     "Recipient account '" + toWallet + "' is not active (current status: "
                     + toAccount.getStatus() + ").");
         }
 
         // ── Step 4: Validate sufficient funds ─────────────────────────────────────
         if (fromAccount.getBalance().compareTo(amount) < 0) {
-            throw new IllegalArgumentException(
+            throw new InsufficientFundsException(
                     "Insufficient funds in wallet '" + fromWallet + "'. "
                     + "Available: " + fromAccount.getBalance() + ", "
                     + "Requested: " + amount + ".");
