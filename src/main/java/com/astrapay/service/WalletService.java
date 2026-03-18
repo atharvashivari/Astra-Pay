@@ -1,5 +1,7 @@
 package com.astrapay.service;
 
+import com.astrapay.dto.TransactionEvent;
+
 import com.astrapay.exception.AccountNotFoundException;
 import com.astrapay.exception.DuplicateTransactionException;
 import com.astrapay.exception.InsufficientFundsException;
@@ -8,11 +10,21 @@ import com.astrapay.repository.AccountRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.redis.core.StringRedisTemplate;
+import org.springframework.kafka.core.KafkaTemplate;
+import org.springframework.security.access.AccessDeniedException;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.transaction.support.TransactionSynchronization;
+import org.springframework.transaction.support.TransactionSynchronizationManager;
 
 import java.math.BigDecimal;
 import java.time.Duration;
+import java.time.Instant;
+import java.util.UUID;
+import java.util.concurrent.CompletableFuture;
+
+
 
 /**
  * Core ledger service responsible for atomic fund transfers between Astra-Pay wallets.
@@ -34,6 +46,8 @@ public class WalletService {
 
     private final AccountRepository accountRepository;
     private final StringRedisTemplate stringRedisTemplate;
+    private final KafkaTemplate<String, Object> kafkaTemplate;
+
 
     /**
      * Transfers {@code amount} from {@code fromWallet} to {@code toWallet} atomically.
@@ -78,6 +92,15 @@ public class WalletService {
         Account fromAccount = firstLock.equals(fromWallet) ? firstAccount : secondAccount;
         Account toAccount   = firstLock.equals(toWallet)   ? firstAccount : secondAccount;
 
+        // ── Security Check: Verify sender owns the wallet ─────────────────────────
+        String currentUsername = SecurityContextHolder.getContext().getAuthentication().getName();
+        if (!fromAccount.getUserId().equals(currentUsername)) {
+            log.warn("Security Breach Attempt: User '{}' tried to transfer from wallet '{}' belonging to '{}'",
+                    currentUsername, fromWallet, fromAccount.getUserId());
+            throw new AccessDeniedException("Unauthorized: You do not own the sender wallet.");
+        }
+
+
         // ── Step 3: Validate account status ───────────────────────────────────────
         if (fromAccount.getStatus() != Account.Status.ACTIVE) {
             throw new IllegalStateException(
@@ -110,5 +133,39 @@ public class WalletService {
 
         // ── Step 7: Mark idempotency key as consumed (24-hour TTL) ─────────────
         stringRedisTemplate.opsForValue().set(idempotencyKey, "1", Duration.ofHours(24));
+
+        // ── Step 8: Send transaction event after commit ────────────────────────
+        sendAuditLog(fromWallet, toWallet, amount);
+    }
+
+    private void sendAuditLog(String fromWallet, String toWallet, BigDecimal amount) {
+        TransactionEvent event = TransactionEvent.builder()
+                .transactionId(UUID.randomUUID().toString())
+                .fromWallet(fromWallet)
+                .toWallet(toWallet)
+                .amount(amount)
+                .timestamp(Instant.now().toString())
+                .status("SUCCESS")
+                .build();
+
+        TransactionSynchronizationManager.registerSynchronization(new TransactionSynchronization() {
+            @Override
+            public void afterCommit() {
+                log.info("Transaction committed. Sending audit log to Kafka: {}", event);
+                
+                CompletableFuture<?> future = kafkaTemplate.send("transaction-events", event);
+                
+                future.whenComplete((result, ex) -> {
+                    if (ex == null) {
+                        log.info("Audit log successfully sent to Kafka for transaction: {}", event.getTransactionId());
+                    } else {
+                        log.error("Failed to send audit log to Kafka for transaction: {}", 
+                                event.getTransactionId(), ex);
+                    }
+                });
+            }
+        });
     }
 }
+
+
