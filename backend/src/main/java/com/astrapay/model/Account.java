@@ -1,6 +1,7 @@
 package com.astrapay.model;
 
 import jakarta.persistence.*;
+import org.hibernate.annotations.Check;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -9,6 +10,7 @@ import java.util.UUID;
 
 @Entity
 @Table(name = "accounts")
+@Check(constraints = "balance >= 0")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor

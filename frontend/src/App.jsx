@@ -1,16 +1,34 @@
+import React from 'react';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import Layout from './components/Layout';
+import BalanceDisplay from './components/BalanceDisplay';
+import TransferForm from './components/TransferForm';
+import TransactionList from './components/TransactionList';
+
+const queryClient = new QueryClient();
+
 function App() {
   return (
-    <div className="flex items-center justify-center min-h-screen bg-slate-900 text-white">
-      <div className="text-center">
-        <h1 className="text-5xl font-extrabold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-emerald-400 mb-4">
-          Astra-Pay
-        </h1>
-        <p className="text-xl text-slate-400 font-medium">
-          Frontend Loading...
-        </p>
-      </div>
-    </div>
-  )
+    <QueryClientProvider client={queryClient}>
+      <Layout>
+        <div className="space-y-8">
+          <header className="flex justify-between items-center border-b-4 border-black pb-4">
+            <h2 className="text-3xl font-black uppercase">Dashboard Overview</h2>
+            <BalanceDisplay />
+          </header>
+          
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <TransferForm />
+            <div className="p-6 border-2 border-black bg-gray-50 flex items-center justify-center">
+              <p className="font-bold text-gray-500 italic">[ Ad Space / Banner - Wireframe ]</p>
+            </div>
+          </div>
+
+          <TransactionList />
+        </div>
+      </Layout>
+    </QueryClientProvider>
+  );
 }
 
-export default App
+export default App;

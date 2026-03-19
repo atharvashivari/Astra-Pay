@@ -18,4 +18,5 @@ public class TransactionEvent {
     private BigDecimal amount;
     private String timestamp;
     private String status;
+    private String traceId;
 }
