@@ -6,8 +6,10 @@ import com.astrapay.exception.DuplicateTransactionException;
 import com.astrapay.exception.InsufficientFundsException;
 import com.astrapay.model.Account;
 import com.astrapay.model.Transaction;
+import com.astrapay.model.User;
 import com.astrapay.repository.AccountRepository;
 import com.astrapay.repository.TransactionRepository;
+import com.astrapay.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.slf4j.MDC;
@@ -25,6 +27,7 @@ import java.math.BigDecimal;
 import java.time.Duration;
 import java.time.Instant;
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 import java.util.concurrent.CompletableFuture;
 
@@ -40,6 +43,29 @@ public class WalletService {
     private final TransactionRepository transactionRepository;
     private final StringRedisTemplate stringRedisTemplate;
     private final KafkaTemplate<String, Object> kafkaTemplate;
+    private final UserRepository userRepository;
+
+    /**
+     * Retrieves the account for a given username. Used by the balance endpoint.
+     */
+    public Optional<Account> getAccountByUsername(String username) {
+        return userRepository.findByUsername(username)
+                .flatMap(user -> accountRepository.findByUserId(user.getId().toString())
+                        .stream().findFirst());
+    }
+
+    /**
+     * Retrieves recent transactions for a given username. Used by the transactions endpoint.
+     */
+    public List<Transaction> getTransactionsByUsername(String username) {
+        return userRepository.findByUsername(username)
+                .flatMap(user -> accountRepository.findByUserId(user.getId().toString())
+                        .stream().findFirst())
+                .map(account -> transactionRepository
+                        .findTop20ByFromWalletOrToWalletOrderByCreatedAtDesc(
+                                account.getWalletAddress(), account.getWalletAddress()))
+                .orElse(List.of());
+    }
 
     /**
      * Transfers {@code amount} from {@code fromWallet} to {@code toWallet} atomically.
@@ -126,7 +152,10 @@ public class WalletService {
 
     private void validateOwnership(Account fromAccount) {
         String currentUsername = SecurityContextHolder.getContext().getAuthentication().getName();
-        if (!fromAccount.getUserId().equals(currentUsername)) {
+        User currentUser = userRepository.findByUsername(currentUsername)
+                .orElseThrow(() -> new AccessDeniedException("User not found: " + currentUsername));
+
+        if (!fromAccount.getUserId().equals(currentUser.getId().toString())) {
             log.warn("Security Breach Attempt: User '{}' tried to transfer from wallet '{}'",
                     currentUsername, fromAccount.getWalletAddress());
             throw new AccessDeniedException("Unauthorized: You do not own the sender wallet.");

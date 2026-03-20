@@ -8,6 +8,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -25,6 +26,11 @@ public interface AccountRepository extends JpaRepository<Account, UUID> {
      * Finds an account by its unique wallet address (no lock).
      */
     Optional<Account> findByWalletAddress(String walletAddress);
+
+    /**
+     * Finds accounts by user ID.
+     */
+    List<Account> findByUserId(String userId);
 
     /**
      * Finds an account by its wallet address and acquires a row-level PESSIMISTIC_WRITE

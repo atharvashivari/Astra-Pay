@@ -1,0 +1,105 @@
+﻿
+C:\Users\Atharva Shivari\OneDrive\Desktop\Work\Astra-Pay\backend>set ERROR_CODE=0 
+
+C:\Users\Atharva Shivari\OneDrive\Desktop\Work\Astra-Pay\backend>set MAVEN_MAIN_CLASS=org.apache.maven.wrapper.MavenWrapperMain 
+
+C:\Users\Atharva Shivari\OneDrive\Desktop\Work\Astra-Pay\backend>if not "C:\Program Files\Microsoft\jdk-21.0.10.7-hotspot\" == "" goto OkJHome 
+
+C:\Users\Atharva Shivari\OneDrive\Desktop\Work\Astra-Pay\backend>set "JAVACMD=C:\Program Files\Microsoft\jdk-21.0.10.7-hotspot\\bin\java.exe" 
+
+C:\Users\Atharva Shivari\OneDrive\Desktop\Work\Astra-Pay\backend>if exist "C:\Program Files\Microsoft\jdk-21.0.10.7-hotspot\\bin\java.exe" goto init 
+
+C:\Users\Atharva Shivari\OneDrive\Desktop\Work\Astra-Pay\backend>set MAVEN_PROJECTBASEDIR= 
+
+C:\Users\Atharva Shivari\OneDrive\Desktop\Work\Astra-Pay\backend>if not "" == "" goto endDetectBaseDir 
+
+C:\Users\Atharva Shivari\OneDrive\Desktop\Work\Astra-Pay\backend>set EXEC_DIR=C:\Users\Atharva Shivari\OneDrive\Desktop\Work\Astra-Pay\backend 
+
+C:\Users\Atharva Shivari\OneDrive\Desktop\Work\Astra-Pay\backend>set W_DIR=C:\Users\Atharva Shivari\OneDrive\Desktop\Work\Astra-Pay\backend 
+
+C:\Users\Atharva Shivari\OneDrive\Desktop\Work\Astra-Pay\backend>if exist "C:\Users\Atharva Shivari\OneDrive\Desktop\Work\Astra-Pay\backend\.mvn" (
+set "MAVEN_PROJECTBASEDIR=C:\Users\Atharva Shivari\OneDrive\Desktop\Work\Astra-Pay\backend"  
+ goto endDetectBaseDir 
+) 
+
+C:\Users\Atharva Shivari\OneDrive\Desktop\Work\Astra-Pay\backend>cd "C:\Users\Atharva Shivari\OneDrive\Desktop\Work\Astra-Pay\backend" 
+
+C:\Users\Atharva Shivari\OneDrive\Desktop\Work\Astra-Pay\backend>set WRAPPER_JAR="C:\Users\Atharva Shivari\OneDrive\Desktop\Work\Astra-Pay\backend\.mvn\wrapper\maven-wrapper.jar" 
+
+C:\Users\Atharva Shivari\OneDrive\Desktop\Work\Astra-Pay\backend>set WRAPPER_PROPERTIES="C:\Users\Atharva Shivari\OneDrive\Desktop\Work\Astra-Pay\backend\.mvn\wrapper\maven-wrapper.properties" 
+
+C:\Users\Atharva Shivari\OneDrive\Desktop\Work\Astra-Pay\backend>set MAVEN_OPTS= "-Dmaven.multiModuleProjectDirectory=C:\Users\Atharva Shivari\OneDrive\Desktop\Work\Astra-Pay\backend" 
+
+C:\Users\Atharva Shivari\OneDrive\Desktop\Work\Astra-Pay\backend>"C:\Program Files\Microsoft\jdk-21.0.10.7-hotspot\\bin\java.exe"  "-Dmaven.multiModuleProjectDirectory=C:\Users\Atharva Shivari\OneDrive\Desktop\Work\Astra-Pay\backend" -classpath "C:\Users\Atharva Shivari\OneDrive\Desktop\Work\Astra-Pay\backend\.mvn\wrapper\maven-wrapper.jar" org.apache.maven.wrapper.MavenWrapperMain spring-boot:run -B 
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] -----------------------< com.astrapay:astra-pay >-----------------------
+[INFO] Building astra-pay 0.0.1-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] >>> spring-boot:3.3.0:run (default-cli) > test-compile @ astra-pay >>>
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ astra-pay ---
+[INFO] Copying 1 resource from src\main\resources to target\classes
+[INFO] Copying 1 resource from src\main\resources to target\classes
+[INFO] 
+[INFO] --- compiler:3.13.0:compile (default-compile) @ astra-pay ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ astra-pay ---
+[INFO] skip non existing resourceDirectory C:\Users\Atharva Shivari\OneDrive\Desktop\Work\Astra-Pay\backend\src\test\resources
+[INFO] 
+[INFO] --- compiler:3.13.0:testCompile (default-testCompile) @ astra-pay ---
+[INFO] Recompiling the module because of changed source code.
+[INFO] Compiling 2 source files with javac [debug parameters release 21] to target\test-classes
+[INFO] Annotation processing is enabled because one or more processors were found
+  on the class path. A future release of javac may disable annotation processing
+  unless at least one processor is specified by name (-processor), or a search
+  path is specified (--processor-path, --processor-module-path), or annotation
+  processing is enabled explicitly (-proc:only, -proc:full).
+  Use -Xlint:-options to suppress this message.
+  Use -proc:none to disable annotation processing.
+[INFO] -------------------------------------------------------------
+[ERROR] COMPILATION ERROR : 
+[INFO] -------------------------------------------------------------
+[ERROR] /C:/Users/Atharva Shivari/OneDrive/Desktop/Work/Astra-Pay/backend/src/test/java/com/astrapay/integration/EndToEndTransferTest.java:[81,52] cannot find symbol
+  symbol:   method findByUserId(java.lang.String)
+  location: variable accountRepository of type com.astrapay.repository.AccountRepository
+[ERROR] /C:/Users/Atharva Shivari/OneDrive/Desktop/Work/Astra-Pay/backend/src/test/java/com/astrapay/integration/EndToEndTransferTest.java:[103,50] cannot find symbol
+  symbol:   method findByUserId(java.lang.String)
+  location: variable accountRepository of type com.astrapay.repository.AccountRepository
+[INFO] 2 errors 
+[INFO] -------------------------------------------------------------
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  4.121 s
+[INFO] Finished at: 2026-03-19T22:04:51+05:30
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-compiler-plugin:3.13.0:testCompile (default-testCompile) on project astra-pay: Compilation failure: Compilation failure: 
+[ERROR] /C:/Users/Atharva Shivari/OneDrive/Desktop/Work/Astra-Pay/backend/src/test/java/com/astrapay/integration/EndToEndTransferTest.java:[81,52] cannot find symbol
+[ERROR]   symbol:   method findByUserId(java.lang.String)
+[ERROR]   location: variable accountRepository of type com.astrapay.repository.AccountRepository
+[ERROR] /C:/Users/Atharva Shivari/OneDrive/Desktop/Work/Astra-Pay/backend/src/test/java/com/astrapay/integration/EndToEndTransferTest.java:[103,50] cannot find symbol
+[ERROR]   symbol:   method findByUserId(java.lang.String)
+[ERROR]   location: variable accountRepository of type com.astrapay.repository.AccountRepository
+[ERROR] -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException
+
+C:\Users\Atharva Shivari\OneDrive\Desktop\Work\Astra-Pay\backend>if ERRORLEVEL 1 goto error 
+
+C:\Users\Atharva Shivari\OneDrive\Desktop\Work\Astra-Pay\backend>set ERROR_CODE=1 
+
+C:\Users\Atharva Shivari\OneDrive\Desktop\Work\Astra-Pay\backend>if not "" == "" goto skipRcPost 
+
+C:\Users\Atharva Shivari\OneDrive\Desktop\Work\Astra-Pay\backend>if "" == "on" pause
+
+C:\Users\Atharva Shivari\OneDrive\Desktop\Work\Astra-Pay\backend>if "" == "on" exit 1 
+
+C:\Users\Atharva Shivari\OneDrive\Desktop\Work\Astra-Pay\backend>exit /B 1 

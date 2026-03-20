@@ -1,0 +1,60 @@
+
+C:\Users\Atharva Shivari\OneDrive\Desktop\Work\Astra-Pay\backend>set ERROR_CODE=0 
+
+C:\Users\Atharva Shivari\OneDrive\Desktop\Work\Astra-Pay\backend>set MAVEN_MAIN_CLASS=org.apache.maven.wrapper.MavenWrapperMain 
+
+C:\Users\Atharva Shivari\OneDrive\Desktop\Work\Astra-Pay\backend>if not "C:\Program Files\Microsoft\jdk-21.0.10.7-hotspot\" == "" goto OkJHome 
+
+C:\Users\Atharva Shivari\OneDrive\Desktop\Work\Astra-Pay\backend>set "JAVACMD=C:\Program Files\Microsoft\jdk-21.0.10.7-hotspot\\bin\java.exe" 
+
+C:\Users\Atharva Shivari\OneDrive\Desktop\Work\Astra-Pay\backend>if exist "C:\Program Files\Microsoft\jdk-21.0.10.7-hotspot\\bin\java.exe" goto init 
+
+C:\Users\Atharva Shivari\OneDrive\Desktop\Work\Astra-Pay\backend>set MAVEN_PROJECTBASEDIR= 
+
+C:\Users\Atharva Shivari\OneDrive\Desktop\Work\Astra-Pay\backend>if not "" == "" goto endDetectBaseDir 
+
+C:\Users\Atharva Shivari\OneDrive\Desktop\Work\Astra-Pay\backend>set EXEC_DIR=C:\Users\Atharva Shivari\OneDrive\Desktop\Work\Astra-Pay\backend 
+
+C:\Users\Atharva Shivari\OneDrive\Desktop\Work\Astra-Pay\backend>set W_DIR=C:\Users\Atharva Shivari\OneDrive\Desktop\Work\Astra-Pay\backend 
+
+C:\Users\Atharva Shivari\OneDrive\Desktop\Work\Astra-Pay\backend>if exist "C:\Users\Atharva Shivari\OneDrive\Desktop\Work\Astra-Pay\backend\.mvn" (
+set "MAVEN_PROJECTBASEDIR=C:\Users\Atharva Shivari\OneDrive\Desktop\Work\Astra-Pay\backend"  
+ goto endDetectBaseDir 
+) 
+
+C:\Users\Atharva Shivari\OneDrive\Desktop\Work\Astra-Pay\backend>cd "C:\Users\Atharva Shivari\OneDrive\Desktop\Work\Astra-Pay\backend" 
+
+C:\Users\Atharva Shivari\OneDrive\Desktop\Work\Astra-Pay\backend>set WRAPPER_JAR="C:\Users\Atharva Shivari\OneDrive\Desktop\Work\Astra-Pay\backend\.mvn\wrapper\maven-wrapper.jar" 
+
+C:\Users\Atharva Shivari\OneDrive\Desktop\Work\Astra-Pay\backend>set WRAPPER_PROPERTIES="C:\Users\Atharva Shivari\OneDrive\Desktop\Work\Astra-Pay\backend\.mvn\wrapper\maven-wrapper.properties" 
+
+C:\Users\Atharva Shivari\OneDrive\Desktop\Work\Astra-Pay\backend>set MAVEN_OPTS= "-Dmaven.multiModuleProjectDirectory=C:\Users\Atharva Shivari\OneDrive\Desktop\Work\Astra-Pay\backend" 
+
+C:\Users\Atharva Shivari\OneDrive\Desktop\Work\Astra-Pay\backend>"C:\Program Files\Microsoft\jdk-21.0.10.7-hotspot\\bin\java.exe"  "-Dmaven.multiModuleProjectDirectory=C:\Users\Atharva Shivari\OneDrive\Desktop\Work\Astra-Pay\backend" -classpath "C:\Users\Atharva Shivari\OneDrive\Desktop\Work\Astra-Pay\backend\.mvn\wrapper\maven-wrapper.jar" org.apache.maven.wrapper.MavenWrapperMain compile 
+[INFO] Scanning for projects...
+[ERROR] [ERROR] Some problems were encountered while processing the POMs:
+[FATAL] Non-parseable POM C:\Users\Atharva Shivari\OneDrive\Desktop\Work\Astra-Pay\backend\pom.xml: end tag name </build> must match start tag name <plugins> from line 93 (position: TEXT seen ...</plugin>\n\t\t</build>... @106:11)  @ line 106, column 11
+ @ 
+[ERROR] The build could not read 1 project -> [Help 1]
+[ERROR]   
+[ERROR]   The project  (C:\Users\Atharva Shivari\OneDrive\Desktop\Work\Astra-Pay\backend\pom.xml) has 1 error
+[ERROR]     Non-parseable POM C:\Users\Atharva Shivari\OneDrive\Desktop\Work\Astra-Pay\backend\pom.xml: end tag name </build> must match start tag name <plugins> from line 93 (position: TEXT seen ...</plugin>\n\t\t</build>... @106:11)  @ line 106, column 11 -> [Help 2]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/ProjectBuildingException
+[ERROR] [Help 2] http://cwiki.apache.org/confluence/display/MAVEN/ModelParseException
+
+C:\Users\Atharva Shivari\OneDrive\Desktop\Work\Astra-Pay\backend>if ERRORLEVEL 1 goto error 
+
+C:\Users\Atharva Shivari\OneDrive\Desktop\Work\Astra-Pay\backend>set ERROR_CODE=1 
+
+C:\Users\Atharva Shivari\OneDrive\Desktop\Work\Astra-Pay\backend>if not "" == "" goto skipRcPost 
+
+C:\Users\Atharva Shivari\OneDrive\Desktop\Work\Astra-Pay\backend>if "" == "on" pause
+
+C:\Users\Atharva Shivari\OneDrive\Desktop\Work\Astra-Pay\backend>if "" == "on" exit 1 
+
+C:\Users\Atharva Shivari\OneDrive\Desktop\Work\Astra-Pay\backend>exit /B 1 

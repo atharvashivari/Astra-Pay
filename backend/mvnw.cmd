@@ -100,7 +100,7 @@ set WRAPPER_PROPERTIES="%MAVEN_PROJECTBASEDIR%\.mvn\wrapper\maven-wrapper.proper
 set MAVEN_OPTS=%MAVEN_OPTS% "-Dmaven.multiModuleProjectDirectory=%MAVEN_PROJECTBASEDIR%"
 
 @REM Start MAVEN
-%JAVACMD% %MAVEN_OPTS% -classpath %WRAPPER_JAR% %MAVEN_MAIN_CLASS% %*
+"%JAVACMD%" %MAVEN_OPTS% -classpath %WRAPPER_JAR% %MAVEN_MAIN_CLASS% %*
 if ERRORLEVEL 1 goto error
 goto end
 

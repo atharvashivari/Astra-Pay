@@ -11,4 +11,5 @@ import java.util.UUID;
 @Repository
 public interface TransactionRepository extends JpaRepository<Transaction, UUID> {
     List<Transaction> findByStatusAndCreatedAtBefore(Transaction.Status status, Instant dateTime);
+    List<Transaction> findTop20ByFromWalletOrToWalletOrderByCreatedAtDesc(String fromWallet, String toWallet);
 }

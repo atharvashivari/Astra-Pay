@@ -1,0 +1,64 @@
+
+C:\Users\Atharva Shivari\OneDrive\Desktop\Work\Astra-Pay\backend>set ERROR_CODE=0 
+
+C:\Users\Atharva Shivari\OneDrive\Desktop\Work\Astra-Pay\backend>set MAVEN_MAIN_CLASS=org.apache.maven.wrapper.MavenWrapperMain 
+
+C:\Users\Atharva Shivari\OneDrive\Desktop\Work\Astra-Pay\backend>if not "C:\Program Files\Microsoft\jdk-21.0.10.7-hotspot\" == "" goto OkJHome 
+
+C:\Users\Atharva Shivari\OneDrive\Desktop\Work\Astra-Pay\backend>set "JAVACMD=C:\Program Files\Microsoft\jdk-21.0.10.7-hotspot\\bin\java.exe" 
+
+C:\Users\Atharva Shivari\OneDrive\Desktop\Work\Astra-Pay\backend>if exist "C:\Program Files\Microsoft\jdk-21.0.10.7-hotspot\\bin\java.exe" goto init 
+
+C:\Users\Atharva Shivari\OneDrive\Desktop\Work\Astra-Pay\backend>set MAVEN_PROJECTBASEDIR= 
+
+C:\Users\Atharva Shivari\OneDrive\Desktop\Work\Astra-Pay\backend>if not "" == "" goto endDetectBaseDir 
+
+C:\Users\Atharva Shivari\OneDrive\Desktop\Work\Astra-Pay\backend>set EXEC_DIR=C:\Users\Atharva Shivari\OneDrive\Desktop\Work\Astra-Pay\backend 
+
+C:\Users\Atharva Shivari\OneDrive\Desktop\Work\Astra-Pay\backend>set W_DIR=C:\Users\Atharva Shivari\OneDrive\Desktop\Work\Astra-Pay\backend 
+
+C:\Users\Atharva Shivari\OneDrive\Desktop\Work\Astra-Pay\backend>if exist "C:\Users\Atharva Shivari\OneDrive\Desktop\Work\Astra-Pay\backend\.mvn" (
+set "MAVEN_PROJECTBASEDIR=C:\Users\Atharva Shivari\OneDrive\Desktop\Work\Astra-Pay\backend"  
+ goto endDetectBaseDir 
+) 
+
+C:\Users\Atharva Shivari\OneDrive\Desktop\Work\Astra-Pay\backend>cd "C:\Users\Atharva Shivari\OneDrive\Desktop\Work\Astra-Pay\backend" 
+
+C:\Users\Atharva Shivari\OneDrive\Desktop\Work\Astra-Pay\backend>set WRAPPER_JAR="C:\Users\Atharva Shivari\OneDrive\Desktop\Work\Astra-Pay\backend\.mvn\wrapper\maven-wrapper.jar" 
+
+C:\Users\Atharva Shivari\OneDrive\Desktop\Work\Astra-Pay\backend>set WRAPPER_PROPERTIES="C:\Users\Atharva Shivari\OneDrive\Desktop\Work\Astra-Pay\backend\.mvn\wrapper\maven-wrapper.properties" 
+
+C:\Users\Atharva Shivari\OneDrive\Desktop\Work\Astra-Pay\backend>set MAVEN_OPTS= "-Dmaven.multiModuleProjectDirectory=C:\Users\Atharva Shivari\OneDrive\Desktop\Work\Astra-Pay\backend" 
+
+C:\Users\Atharva Shivari\OneDrive\Desktop\Work\Astra-Pay\backend>"C:\Program Files\Microsoft\jdk-21.0.10.7-hotspot\\bin\java.exe"  "-Dmaven.multiModuleProjectDirectory=C:\Users\Atharva Shivari\OneDrive\Desktop\Work\Astra-Pay\backend" -classpath "C:\Users\Atharva Shivari\OneDrive\Desktop\Work\Astra-Pay\backend\.mvn\wrapper\maven-wrapper.jar" org.apache.maven.wrapper.MavenWrapperMain compile 
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] -----------------------< com.astrapay:astra-pay >-----------------------
+[INFO] Building astra-pay 0.0.1-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ astra-pay ---
+[INFO] Copying 1 resource from src\main\resources to target\classes
+[INFO] Copying 1 resource from src\main\resources to target\classes
+[INFO] 
+[INFO] --- compiler:3.13.0:compile (default-compile) @ astra-pay ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  1.803 s
+[INFO] Finished at: 2026-03-19T21:53:55+05:30
+[INFO] ------------------------------------------------------------------------
+
+C:\Users\Atharva Shivari\OneDrive\Desktop\Work\Astra-Pay\backend>if ERRORLEVEL 1 goto error 
+
+C:\Users\Atharva Shivari\OneDrive\Desktop\Work\Astra-Pay\backend>goto end 
+
+C:\Users\Atharva Shivari\OneDrive\Desktop\Work\Astra-Pay\backend>if not "" == "" goto skipRcPost 
+
+C:\Users\Atharva Shivari\OneDrive\Desktop\Work\Astra-Pay\backend>if "" == "on" pause
+
+C:\Users\Atharva Shivari\OneDrive\Desktop\Work\Astra-Pay\backend>if "" == "on" exit 0 
+
+C:\Users\Atharva Shivari\OneDrive\Desktop\Work\Astra-Pay\backend>exit /B 0 

@@ -1,0 +1,662 @@
+﻿
+C:\Users\Atharva Shivari\OneDrive\Desktop\Work\Astra-Pay\backend>set ERROR_CODE=0 
+
+C:\Users\Atharva Shivari\OneDrive\Desktop\Work\Astra-Pay\backend>set MAVEN_MAIN_CLASS=org.apache.maven.wrapper.MavenWrapperMain 
+
+C:\Users\Atharva Shivari\OneDrive\Desktop\Work\Astra-Pay\backend>if not "C:\Program Files\Microsoft\jdk-21.0.10.7-hotspot\" == "" goto OkJHome 
+
+C:\Users\Atharva Shivari\OneDrive\Desktop\Work\Astra-Pay\backend>set "JAVACMD=C:\Program Files\Microsoft\jdk-21.0.10.7-hotspot\\bin\java.exe" 
+
+C:\Users\Atharva Shivari\OneDrive\Desktop\Work\Astra-Pay\backend>if exist "C:\Program Files\Microsoft\jdk-21.0.10.7-hotspot\\bin\java.exe" goto init 
+
+C:\Users\Atharva Shivari\OneDrive\Desktop\Work\Astra-Pay\backend>set MAVEN_PROJECTBASEDIR= 
+
+C:\Users\Atharva Shivari\OneDrive\Desktop\Work\Astra-Pay\backend>if not "" == "" goto endDetectBaseDir 
+
+C:\Users\Atharva Shivari\OneDrive\Desktop\Work\Astra-Pay\backend>set EXEC_DIR=C:\Users\Atharva Shivari\OneDrive\Desktop\Work\Astra-Pay\backend 
+
+C:\Users\Atharva Shivari\OneDrive\Desktop\Work\Astra-Pay\backend>set W_DIR=C:\Users\Atharva Shivari\OneDrive\Desktop\Work\Astra-Pay\backend 
+
+C:\Users\Atharva Shivari\OneDrive\Desktop\Work\Astra-Pay\backend>if exist "C:\Users\Atharva Shivari\OneDrive\Desktop\Work\Astra-Pay\backend\.mvn" (
+set "MAVEN_PROJECTBASEDIR=C:\Users\Atharva Shivari\OneDrive\Desktop\Work\Astra-Pay\backend"  
+ goto endDetectBaseDir 
+) 
+
+C:\Users\Atharva Shivari\OneDrive\Desktop\Work\Astra-Pay\backend>cd "C:\Users\Atharva Shivari\OneDrive\Desktop\Work\Astra-Pay\backend" 
+
+C:\Users\Atharva Shivari\OneDrive\Desktop\Work\Astra-Pay\backend>set WRAPPER_JAR="C:\Users\Atharva Shivari\OneDrive\Desktop\Work\Astra-Pay\backend\.mvn\wrapper\maven-wrapper.jar" 
+
+C:\Users\Atharva Shivari\OneDrive\Desktop\Work\Astra-Pay\backend>set WRAPPER_PROPERTIES="C:\Users\Atharva Shivari\OneDrive\Desktop\Work\Astra-Pay\backend\.mvn\wrapper\maven-wrapper.properties" 
+
+C:\Users\Atharva Shivari\OneDrive\Desktop\Work\Astra-Pay\backend>set MAVEN_OPTS= "-Dmaven.multiModuleProjectDirectory=C:\Users\Atharva Shivari\OneDrive\Desktop\Work\Astra-Pay\backend" 
+
+C:\Users\Atharva Shivari\OneDrive\Desktop\Work\Astra-Pay\backend>"C:\Program Files\Microsoft\jdk-21.0.10.7-hotspot\\bin\java.exe"  "-Dmaven.multiModuleProjectDirectory=C:\Users\Atharva Shivari\OneDrive\Desktop\Work\Astra-Pay\backend" -classpath "C:\Users\Atharva Shivari\OneDrive\Desktop\Work\Astra-Pay\backend\.mvn\wrapper\maven-wrapper.jar" org.apache.maven.wrapper.MavenWrapperMain test -Dtest=EndToEndTransferTest -B 
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] -----------------------< com.astrapay:astra-pay >-----------------------
+[INFO] Building astra-pay 0.0.1-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ astra-pay ---
+[INFO] Copying 1 resource from src\main\resources to target\classes
+[INFO] Copying 1 resource from src\main\resources to target\classes
+[INFO] 
+[INFO] --- compiler:3.13.0:compile (default-compile) @ astra-pay ---
+[INFO] Recompiling the module because of changed source code.
+[INFO] Compiling 29 source files with javac [debug parameters release 21] to target\classes
+[INFO] Annotation processing is enabled because one or more processors were found
+  on the class path. A future release of javac may disable annotation processing
+  unless at least one processor is specified by name (-processor), or a search
+  path is specified (--processor-path, --processor-module-path), or annotation
+  processing is enabled explicitly (-proc:only, -proc:full).
+  Use -Xlint:-options to suppress this message.
+  Use -proc:none to disable annotation processing.
+[INFO] /C:/Users/Atharva Shivari/OneDrive/Desktop/Work/Astra-Pay/backend/src/main/java/com/astrapay/interceptor/RateLimitInterceptor.java: C:\Users\Atharva Shivari\OneDrive\Desktop\Work\Astra-Pay\backend\src\main\java\com\astrapay\interceptor\RateLimitInterceptor.java uses or overrides a deprecated API.
+[INFO] /C:/Users/Atharva Shivari/OneDrive/Desktop/Work/Astra-Pay/backend/src/main/java/com/astrapay/interceptor/RateLimitInterceptor.java: Recompile with -Xlint:deprecation for details.
+[INFO] 
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ astra-pay ---
+[INFO] skip non existing resourceDirectory C:\Users\Atharva Shivari\OneDrive\Desktop\Work\Astra-Pay\backend\src\test\resources
+[INFO] 
+[INFO] --- compiler:3.13.0:testCompile (default-testCompile) @ astra-pay ---
+[INFO] Recompiling the module because of changed dependency.
+[INFO] Compiling 2 source files with javac [debug parameters release 21] to target\test-classes
+[INFO] Annotation processing is enabled because one or more processors were found
+  on the class path. A future release of javac may disable annotation processing
+  unless at least one processor is specified by name (-processor), or a search
+  path is specified (--processor-path, --processor-module-path), or annotation
+  processing is enabled explicitly (-proc:only, -proc:full).
+  Use -Xlint:-options to suppress this message.
+  Use -proc:none to disable annotation processing.
+[INFO] 
+[INFO] --- surefire:3.2.5:test (default-test) @ astra-pay ---
+[INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running com.astrapay.integration.EndToEndTransferTest
+22:35:57.285 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [com.astrapay.integration.EndToEndTransferTest]: EndToEndTransferTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+22:35:57.456 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration com.astrapay.AstraPayApplication for test class com.astrapay.integration.EndToEndTransferTest
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v3.3.0)
+
+2026-03-19T22:35:58.303+05:30  INFO 25332 --- [           main] c.a.integration.EndToEndTransferTest     : Starting EndToEndTransferTest using Java 21.0.10 with PID 25332 (started by Atharva Shivari in C:\Users\Atharva Shivari\OneDrive\Desktop\Work\Astra-Pay\backend)
+2026-03-19T22:35:58.304+05:30  INFO 25332 --- [           main] c.a.integration.EndToEndTransferTest     : No active profile set, falling back to 1 default profile: "default"
+2026-03-19T22:36:00.717+05:30  INFO 25332 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2026-03-19T22:36:00.719+05:30  INFO 25332 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-03-19T22:36:00.934+05:30  INFO 25332 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 201 ms. Found 3 JPA repository interfaces.
+2026-03-19T22:36:00.967+05:30  INFO 25332 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2026-03-19T22:36:00.969+05:30  INFO 25332 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2026-03-19T22:36:01.007+05:30  INFO 25332 --- [           main] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.astrapay.repository.AccountRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2026-03-19T22:36:01.007+05:30  INFO 25332 --- [           main] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.astrapay.repository.TransactionRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2026-03-19T22:36:01.007+05:30  INFO 25332 --- [           main] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.astrapay.repository.UserRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2026-03-19T22:36:01.008+05:30  INFO 25332 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 18 ms. Found 0 Redis repository interfaces.
+2026-03-19T22:36:03.790+05:30  INFO 25332 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8081 (http)
+2026-03-19T22:36:03.870+05:30  INFO 25332 --- [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-03-19T22:36:03.871+05:30  INFO 25332 --- [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.24]
+2026-03-19T22:36:04.158+05:30  INFO 25332 --- [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2026-03-19T22:36:04.161+05:30  INFO 25332 --- [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 5267 ms
+2026-03-19T22:36:04.950+05:30  INFO 25332 --- [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-03-19T22:36:05.131+05:30  INFO 25332 --- [           main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.2.Final
+2026-03-19T22:36:05.189+05:30  INFO 25332 --- [           main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2026-03-19T22:36:05.874+05:30  INFO 25332 --- [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-03-19T22:36:05.911+05:30  INFO 25332 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-03-19T22:36:06.151+05:30  INFO 25332 --- [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@3fc5d397
+2026-03-19T22:36:06.152+05:30  INFO 25332 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-03-19T22:36:07.797+05:30  INFO 25332 --- [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-03-19T22:36:07.919+05:30  INFO 25332 --- [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-03-19T22:36:08.530+05:30  INFO 25332 --- [           main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-03-19T22:36:09.575+05:30  INFO 25332 --- [           main] eAuthenticationProviderManagerConfigurer : Global AuthenticationManager configured with AuthenticationProvider bean with name authenticationProvider
+2026-03-19T22:36:09.576+05:30  WARN 25332 --- [           main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used for username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider.
+2026-03-19T22:36:10.548+05:30  WARN 25332 --- [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-03-19T22:36:11.709+05:30  INFO 25332 --- [           main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@787f97b, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@37e682da, org.springframework.security.web.context.SecurityContextHolderFilter@57e273e0, org.springframework.security.web.header.HeaderWriterFilter@5cbdc23b, org.springframework.web.filter.CorsFilter@3ace955c, org.springframework.security.web.authentication.logout.LogoutFilter@2927d781, com.astrapay.config.JwtAuthenticationFilter@5c168f98, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@1ed43328, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@7fc2e0b7, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@4c00c8ce, org.springframework.security.web.session.SessionManagementFilter@25082311, org.springframework.security.web.access.ExceptionTranslationFilter@171b3f38, org.springframework.security.web.access.intercept.AuthorizationFilter@34672fb]
+2026-03-19T22:36:12.829+05:30  INFO 25332 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8081 (http) with context path '/'
+2026-03-19T22:36:12.850+05:30  INFO 25332 --- [           main] c.a.integration.EndToEndTransferTest     : Started EndToEndTransferTest in 15.195 seconds (process running for 16.813)
+Hibernate: select t1_0.id,t1_0.amount,t1_0.created_at,t1_0.from_wallet,t1_0.idempotency_key,t1_0.status,t1_0.to_wallet,t1_0.trace_id,t1_0.updated_at from transactions t1_0 where t1_0.status=? and t1_0.created_at<?
+Hibernate: select a1_0.id,a1_0.balance,a1_0.currency,a1_0.status,a1_0.user_id,a1_0.version,a1_0.wallet_address from accounts a1_0
+Hibernate: select u1_0.id,u1_0.email,u1_0.password,u1_0.username from users u1_0
+2026-03-19T22:36:17.027+05:30  INFO 25332 --- [omcat-handler-0] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-03-19T22:36:17.028+05:30  INFO 25332 --- [omcat-handler-0] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-03-19T22:36:17.030+05:30  INFO 25332 --- [omcat-handler-0] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+Hibernate: insert into users (email,password,username,id) values (?,?,?,?)
+Hibernate: insert into accounts (balance,currency,status,user_id,version,wallet_address,id) values (?,?,?,?,?,?,?)
+Hibernate: insert into user_roles (user_id,role) values (?,?)
+Hibernate: select u1_0.id,u1_0.email,u1_0.password,u1_0.username from users u1_0 where u1_0.username=?
+Hibernate: insert into users (email,password,username,id) values (?,?,?,?)
+Hibernate: insert into accounts (balance,currency,status,user_id,version,wallet_address,id) values (?,?,?,?,?,?,?)
+Hibernate: insert into user_roles (user_id,role) values (?,?)
+Hibernate: select u1_0.id,u1_0.email,u1_0.password,u1_0.username from users u1_0 where u1_0.username=?
+Hibernate: select u1_0.id,u1_0.email,u1_0.password,u1_0.username from users u1_0 where u1_0.username=?
+Hibernate: select r1_0.user_id,r1_0.role from user_roles r1_0 where r1_0.user_id=?
+Hibernate: select a1_0.id,a1_0.balance,a1_0.currency,a1_0.status,a1_0.user_id,a1_0.version,a1_0.wallet_address from accounts a1_0 where a1_0.user_id=?
+Hibernate: select u1_0.id,u1_0.email,u1_0.password,u1_0.username from users u1_0 where u1_0.username=?
+Hibernate: select r1_0.user_id,r1_0.role from user_roles r1_0 where r1_0.user_id=?
+Hibernate: select u1_0.id,u1_0.email,u1_0.password,u1_0.username from users u1_0 where u1_0.username=?
+Hibernate: select u1_0.id,u1_0.email,u1_0.password,u1_0.username from users u1_0 where u1_0.username=?
+Hibernate: select u1_0.id,u1_0.email,u1_0.password,u1_0.username from users u1_0 where u1_0.username=?
+Hibernate: select r1_0.user_id,r1_0.role from user_roles r1_0 where r1_0.user_id=?
+Hibernate: select a1_0.id,a1_0.balance,a1_0.currency,a1_0.status,a1_0.user_id,a1_0.version,a1_0.wallet_address from accounts a1_0 where a1_0.user_id=?
+Hibernate: select a1_0.id,a1_0.balance,a1_0.currency,a1_0.status,a1_0.user_id,a1_0.version,a1_0.wallet_address from accounts a1_0 where a1_0.id=?
+Hibernate: update accounts set balance=?,currency=?,status=?,user_id=?,version=?,wallet_address=? where id=? and version=?
+Hibernate: select u1_0.id,u1_0.email,u1_0.password,u1_0.username from users u1_0 where u1_0.username=?
+Hibernate: select r1_0.user_id,r1_0.role from user_roles r1_0 where r1_0.user_id=?
+2026-03-19T22:36:18.499+05:30  INFO 25332 --- [omcat-handler-3] c.astrapay.controller.WalletController   : Received transfer request from '50486947-4d42-4254-9e97-69894c5e913b' to 'b98c5a0f-2c6f-4a64-9b4e-7f0bf89e7596' for amount 100.00 with key 'f4aa9e44-70b6-464c-861b-7d32ba21b451'
+Hibernate: select a1_0.id,a1_0.balance,a1_0.currency,a1_0.status,a1_0.user_id,a1_0.version,a1_0.wallet_address from accounts a1_0 where a1_0.wallet_address=? for no key update
+Hibernate: select a1_0.id,a1_0.balance,a1_0.currency,a1_0.status,a1_0.user_id,a1_0.version,a1_0.wallet_address from accounts a1_0 where a1_0.wallet_address=? for no key update
+Hibernate: select u1_0.id,u1_0.email,u1_0.password,u1_0.username from users u1_0 where u1_0.username=?
+Hibernate: select r1_0.user_id,r1_0.role from user_roles r1_0 where r1_0.user_id=?
+2026-03-19T22:36:19.309+05:30  INFO 25332 --- [omcat-handler-3] com.astrapay.service.WalletService       : Transfer of 100.00 from '50486947-4d42-4254-9e97-69894c5e913b' to 'b98c5a0f-2c6f-4a64-9b4e-7f0bf89e7596' completed successfully. Transaction ID: 76cf41e5-2fd2-49cc-ba58-2c63e195a2b0
+Hibernate: insert into transactions (amount,created_at,from_wallet,idempotency_key,status,to_wallet,trace_id,updated_at,id) values (?,?,?,?,?,?,?,?,?)
+Hibernate: update accounts set balance=?,currency=?,status=?,user_id=?,version=?,wallet_address=? where id=? and version=?
+Hibernate: update accounts set balance=?,currency=?,status=?,user_id=?,version=?,wallet_address=? where id=? and version=?
+2026-03-19T22:36:19.343+05:30  INFO 25332 --- [omcat-handler-3] com.astrapay.service.WalletService       : Sending audit log to Kafka for transaction: 76cf41e5-2fd2-49cc-ba58-2c63e195a2b0
+2026-03-19T22:36:19.402+05:30  INFO 25332 --- [omcat-handler-3] o.a.k.clients.producer.ProducerConfig    : ProducerConfig values: 
+	acks = -1
+	auto.include.jmx.reporter = true
+	batch.size = 16384
+	bootstrap.servers = [localhost:9092]
+	buffer.memory = 33554432
+	client.dns.lookup = use_all_dns_ips
+	client.id = producer-1
+	compression.type = none
+	connections.max.idle.ms = 540000
+	delivery.timeout.ms = 120000
+	enable.idempotence = true
+	enable.metrics.push = true
+	interceptor.classes = []
+	key.serializer = class org.apache.kafka.common.serialization.StringSerializer
+	linger.ms = 0
+	max.block.ms = 60000
+	max.in.flight.requests.per.connection = 5
+	max.request.size = 1048576
+	metadata.max.age.ms = 300000
+	metadata.max.idle.ms = 300000
+	metric.reporters = []
+	metrics.num.samples = 2
+	metrics.recording.level = INFO
+	metrics.sample.window.ms = 30000
+	partitioner.adaptive.partitioning.enable = true
+	partitioner.availability.timeout.ms = 0
+	partitioner.class = null
+	partitioner.ignore.keys = false
+	receive.buffer.bytes = 32768
+	reconnect.backoff.max.ms = 1000
+	reconnect.backoff.ms = 50
+	request.timeout.ms = 30000
+	retries = 2147483647
+	retry.backoff.max.ms = 1000
+	retry.backoff.ms = 100
+	sasl.client.callback.handler.class = null
+	sasl.jaas.config = null
+	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+	sasl.kerberos.min.time.before.relogin = 60000
+	sasl.kerberos.service.name = null
+	sasl.kerberos.ticket.renew.jitter = 0.05
+	sasl.kerberos.ticket.renew.window.factor = 0.8
+	sasl.login.callback.handler.class = null
+	sasl.login.class = null
+	sasl.login.connect.timeout.ms = null
+	sasl.login.read.timeout.ms = null
+	sasl.login.refresh.buffer.seconds = 300
+	sasl.login.refresh.min.period.seconds = 60
+	sasl.login.refresh.window.factor = 0.8
+	sasl.login.refresh.window.jitter = 0.05
+	sasl.login.retry.backoff.max.ms = 10000
+	sasl.login.retry.backoff.ms = 100
+	sasl.mechanism = GSSAPI
+	sasl.oauthbearer.clock.skew.seconds = 30
+	sasl.oauthbearer.expected.audience = null
+	sasl.oauthbearer.expected.issuer = null
+	sasl.oauthbearer.jwks.endpoint.refresh.ms = 3600000
+	sasl.oauthbearer.jwks.endpoint.retry.backoff.max.ms = 10000
+	sasl.oauthbearer.jwks.endpoint.retry.backoff.ms = 100
+	sasl.oauthbearer.jwks.endpoint.url = null
+	sasl.oauthbearer.scope.claim.name = scope
+	sasl.oauthbearer.sub.claim.name = sub
+	sasl.oauthbearer.token.endpoint.url = null
+	security.protocol = PLAINTEXT
+	security.providers = null
+	send.buffer.bytes = 131072
+	socket.connection.setup.timeout.max.ms = 30000
+	socket.connection.setup.timeout.ms = 10000
+	ssl.cipher.suites = null
+	ssl.enabled.protocols = [TLSv1.2, TLSv1.3]
+	ssl.endpoint.identification.algorithm = https
+	ssl.engine.factory.class = null
+	ssl.key.password = null
+	ssl.keymanager.algorithm = SunX509
+	ssl.keystore.certificate.chain = null
+	ssl.keystore.key = null
+	ssl.keystore.location = null
+	ssl.keystore.password = null
+	ssl.keystore.type = JKS
+	ssl.protocol = TLSv1.3
+	ssl.provider = null
+	ssl.secure.random.implementation = null
+	ssl.trustmanager.algorithm = PKIX
+	ssl.truststore.certificates = null
+	ssl.truststore.location = null
+	ssl.truststore.password = null
+	ssl.truststore.type = JKS
+	transaction.timeout.ms = 60000
+	transactional.id = null
+	value.serializer = class org.springframework.kafka.support.serializer.JsonSerializer
+
+2026-03-19T22:36:19.502+05:30  INFO 25332 --- [omcat-handler-3] o.a.k.c.t.i.KafkaMetricsCollector        : initializing Kafka metrics collector
+2026-03-19T22:36:19.741+05:30  INFO 25332 --- [omcat-handler-3] o.a.k.clients.producer.KafkaProducer     : [Producer clientId=producer-1] Instantiated an idempotent producer.
+2026-03-19T22:36:19.853+05:30  INFO 25332 --- [omcat-handler-3] o.a.kafka.common.utils.AppInfoParser     : Kafka version: 3.7.0
+2026-03-19T22:36:19.853+05:30  INFO 25332 --- [omcat-handler-3] o.a.kafka.common.utils.AppInfoParser     : Kafka commitId: 2ae524ed625438c5
+2026-03-19T22:36:19.853+05:30  INFO 25332 --- [omcat-handler-3] o.a.kafka.common.utils.AppInfoParser     : Kafka startTimeMs: 1773939979849
+2026-03-19T22:36:20.400+05:30  INFO 25332 --- [ad | producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=producer-1] Node -1 disconnected.
+2026-03-19T22:36:20.404+05:30  WARN 25332 --- [ad | producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=producer-1] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+2026-03-19T22:36:20.404+05:30  WARN 25332 --- [ad | producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=producer-1] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2026-03-19T22:36:20.514+05:30  INFO 25332 --- [ad | producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=producer-1] Node -1 disconnected.
+2026-03-19T22:36:20.515+05:30  WARN 25332 --- [ad | producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=producer-1] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+2026-03-19T22:36:20.515+05:30  WARN 25332 --- [ad | producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=producer-1] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2026-03-19T22:36:20.622+05:30  INFO 25332 --- [ad | producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=producer-1] Node -1 disconnected.
+2026-03-19T22:36:20.622+05:30  WARN 25332 --- [ad | producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=producer-1] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+2026-03-19T22:36:20.622+05:30  WARN 25332 --- [ad | producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=producer-1] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2026-03-19T22:36:20.902+05:30  INFO 25332 --- [ad | producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=producer-1] Node -1 disconnected.
+2026-03-19T22:36:20.902+05:30  WARN 25332 --- [ad | producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=producer-1] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+2026-03-19T22:36:20.902+05:30  WARN 25332 --- [ad | producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=producer-1] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2026-03-19T22:36:21.231+05:30  INFO 25332 --- [ad | producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=producer-1] Node -1 disconnected.
+2026-03-19T22:36:21.231+05:30  WARN 25332 --- [ad | producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=producer-1] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+2026-03-19T22:36:21.231+05:30  WARN 25332 --- [ad | producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=producer-1] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2026-03-19T22:36:21.982+05:30  INFO 25332 --- [ad | producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=producer-1] Node -1 disconnected.
+2026-03-19T22:36:21.982+05:30  WARN 25332 --- [ad | producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=producer-1] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+2026-03-19T22:36:21.982+05:30  WARN 25332 --- [ad | producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=producer-1] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2026-03-19T22:36:22.883+05:30  INFO 25332 --- [ad | producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=producer-1] Node -1 disconnected.
+2026-03-19T22:36:22.884+05:30  WARN 25332 --- [ad | producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=producer-1] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+2026-03-19T22:36:22.884+05:30  WARN 25332 --- [ad | producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=producer-1] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2026-03-19T22:36:23.926+05:30  INFO 25332 --- [ad | producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=producer-1] Node -1 disconnected.
+2026-03-19T22:36:23.926+05:30  WARN 25332 --- [ad | producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=producer-1] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+2026-03-19T22:36:23.926+05:30  WARN 25332 --- [ad | producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=producer-1] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2026-03-19T22:36:24.882+05:30  INFO 25332 --- [ad | producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=producer-1] Node -1 disconnected.
+2026-03-19T22:36:24.882+05:30  WARN 25332 --- [ad | producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=producer-1] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+2026-03-19T22:36:24.882+05:30  WARN 25332 --- [ad | producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=producer-1] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2026-03-19T22:36:25.892+05:30  INFO 25332 --- [ad | producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=producer-1] Node -1 disconnected.
+2026-03-19T22:36:25.892+05:30  WARN 25332 --- [ad | producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=producer-1] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+2026-03-19T22:36:25.892+05:30  WARN 25332 --- [ad | producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=producer-1] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2026-03-19T22:36:26.783+05:30  INFO 25332 --- [ad | producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=producer-1] Node -1 disconnected.
+2026-03-19T22:36:26.784+05:30  WARN 25332 --- [ad | producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=producer-1] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+2026-03-19T22:36:26.784+05:30  WARN 25332 --- [ad | producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=producer-1] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2026-03-19T22:36:27.826+05:30  INFO 25332 --- [ad | producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=producer-1] Node -1 disconnected.
+2026-03-19T22:36:27.826+05:30  WARN 25332 --- [ad | producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=producer-1] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+2026-03-19T22:36:27.826+05:30  WARN 25332 --- [ad | producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=producer-1] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2026-03-19T22:36:28.792+05:30  INFO 25332 --- [ad | producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=producer-1] Node -1 disconnected.
+2026-03-19T22:36:28.792+05:30  WARN 25332 --- [ad | producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=producer-1] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+2026-03-19T22:36:28.792+05:30  WARN 25332 --- [ad | producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=producer-1] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2026-03-19T22:36:29.771+05:30  INFO 25332 --- [ad | producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=producer-1] Node -1 disconnected.
+2026-03-19T22:36:29.771+05:30  WARN 25332 --- [ad | producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=producer-1] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+2026-03-19T22:36:29.771+05:30  WARN 25332 --- [ad | producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=producer-1] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2026-03-19T22:36:30.786+05:30  INFO 25332 --- [ad | producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=producer-1] Node -1 disconnected.
+2026-03-19T22:36:30.786+05:30  WARN 25332 --- [ad | producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=producer-1] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+2026-03-19T22:36:30.786+05:30  WARN 25332 --- [ad | producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=producer-1] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2026-03-19T22:36:31.741+05:30  INFO 25332 --- [ad | producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=producer-1] Node -1 disconnected.
+2026-03-19T22:36:31.741+05:30  WARN 25332 --- [ad | producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=producer-1] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+2026-03-19T22:36:31.741+05:30  WARN 25332 --- [ad | producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=producer-1] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2026-03-19T22:36:32.751+05:30  INFO 25332 --- [ad | producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=producer-1] Node -1 disconnected.
+2026-03-19T22:36:32.751+05:30  WARN 25332 --- [ad | producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=producer-1] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+2026-03-19T22:36:32.751+05:30  WARN 25332 --- [ad | producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=producer-1] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2026-03-19T22:36:33.763+05:30  INFO 25332 --- [ad | producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=producer-1] Node -1 disconnected.
+2026-03-19T22:36:33.763+05:30  WARN 25332 --- [ad | producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=producer-1] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+2026-03-19T22:36:33.763+05:30  WARN 25332 --- [ad | producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=producer-1] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2026-03-19T22:36:34.729+05:30  INFO 25332 --- [ad | producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=producer-1] Node -1 disconnected.
+2026-03-19T22:36:34.729+05:30  WARN 25332 --- [ad | producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=producer-1] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+2026-03-19T22:36:34.729+05:30  WARN 25332 --- [ad | producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=producer-1] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2026-03-19T22:36:35.710+05:30  INFO 25332 --- [ad | producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=producer-1] Node -1 disconnected.
+2026-03-19T22:36:35.710+05:30  WARN 25332 --- [ad | producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=producer-1] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+2026-03-19T22:36:35.710+05:30  WARN 25332 --- [ad | producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=producer-1] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2026-03-19T22:36:36.692+05:30  INFO 25332 --- [ad | producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=producer-1] Node -1 disconnected.
+2026-03-19T22:36:36.692+05:30  WARN 25332 --- [ad | producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=producer-1] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+2026-03-19T22:36:36.692+05:30  WARN 25332 --- [ad | producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=producer-1] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2026-03-19T22:36:37.552+05:30  INFO 25332 --- [ad | producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=producer-1] Node -1 disconnected.
+2026-03-19T22:36:37.552+05:30  WARN 25332 --- [ad | producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=producer-1] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+2026-03-19T22:36:37.552+05:30  WARN 25332 --- [ad | producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=producer-1] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2026-03-19T22:36:38.580+05:30  INFO 25332 --- [ad | producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=producer-1] Node -1 disconnected.
+2026-03-19T22:36:38.580+05:30  WARN 25332 --- [ad | producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=producer-1] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+2026-03-19T22:36:38.580+05:30  WARN 25332 --- [ad | producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=producer-1] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2026-03-19T22:36:39.592+05:30  INFO 25332 --- [ad | producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=producer-1] Node -1 disconnected.
+2026-03-19T22:36:39.592+05:30  WARN 25332 --- [ad | producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=producer-1] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+2026-03-19T22:36:39.594+05:30  WARN 25332 --- [ad | producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=producer-1] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2026-03-19T22:36:40.598+05:30  INFO 25332 --- [ad | producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=producer-1] Node -1 disconnected.
+2026-03-19T22:36:40.598+05:30  WARN 25332 --- [ad | producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=producer-1] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+2026-03-19T22:36:40.598+05:30  WARN 25332 --- [ad | producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=producer-1] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2026-03-19T22:36:41.574+05:30  INFO 25332 --- [ad | producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=producer-1] Node -1 disconnected.
+2026-03-19T22:36:41.574+05:30  WARN 25332 --- [ad | producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=producer-1] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+2026-03-19T22:36:41.574+05:30  WARN 25332 --- [ad | producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=producer-1] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2026-03-19T22:36:42.616+05:30  INFO 25332 --- [ad | producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=producer-1] Node -1 disconnected.
+2026-03-19T22:36:42.616+05:30  WARN 25332 --- [ad | producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=producer-1] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+2026-03-19T22:36:42.616+05:30  WARN 25332 --- [ad | producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=producer-1] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2026-03-19T22:36:43.507+05:30  INFO 25332 --- [ad | producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=producer-1] Node -1 disconnected.
+2026-03-19T22:36:43.508+05:30  WARN 25332 --- [ad | producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=producer-1] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+2026-03-19T22:36:43.508+05:30  WARN 25332 --- [ad | producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=producer-1] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2026-03-19T22:36:44.537+05:30  INFO 25332 --- [ad | producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=producer-1] Node -1 disconnected.
+2026-03-19T22:36:44.537+05:30  WARN 25332 --- [ad | producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=producer-1] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+2026-03-19T22:36:44.537+05:30  WARN 25332 --- [ad | producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=producer-1] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2026-03-19T22:36:45.501+05:30  INFO 25332 --- [ad | producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=producer-1] Node -1 disconnected.
+2026-03-19T22:36:45.501+05:30  WARN 25332 --- [ad | producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=producer-1] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+2026-03-19T22:36:45.501+05:30  WARN 25332 --- [ad | producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=producer-1] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2026-03-19T22:36:46.513+05:30  INFO 25332 --- [ad | producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=producer-1] Node -1 disconnected.
+2026-03-19T22:36:46.513+05:30  WARN 25332 --- [ad | producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=producer-1] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+2026-03-19T22:36:46.513+05:30  WARN 25332 --- [ad | producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=producer-1] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2026-03-19T22:36:47.417+05:30  INFO 25332 --- [ad | producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=producer-1] Node -1 disconnected.
+2026-03-19T22:36:47.417+05:30  WARN 25332 --- [ad | producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=producer-1] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+2026-03-19T22:36:47.417+05:30  WARN 25332 --- [ad | producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=producer-1] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2026-03-19T22:36:48.432+05:30  INFO 25332 --- [ad | producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=producer-1] Node -1 disconnected.
+2026-03-19T22:36:48.432+05:30  WARN 25332 --- [ad | producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=producer-1] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+2026-03-19T22:36:48.432+05:30  WARN 25332 --- [ad | producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=producer-1] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2026-03-19T22:36:49.444+05:30  INFO 25332 --- [ad | producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=producer-1] Node -1 disconnected.
+2026-03-19T22:36:49.444+05:30  WARN 25332 --- [ad | producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=producer-1] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+2026-03-19T22:36:49.444+05:30  WARN 25332 --- [ad | producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=producer-1] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2026-03-19T22:36:50.485+05:30  INFO 25332 --- [ad | producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=producer-1] Node -1 disconnected.
+2026-03-19T22:36:50.486+05:30  WARN 25332 --- [ad | producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=producer-1] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+2026-03-19T22:36:50.486+05:30  WARN 25332 --- [ad | producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=producer-1] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2026-03-19T22:36:51.440+05:30  INFO 25332 --- [ad | producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=producer-1] Node -1 disconnected.
+2026-03-19T22:36:51.440+05:30  WARN 25332 --- [ad | producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=producer-1] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+2026-03-19T22:36:51.440+05:30  WARN 25332 --- [ad | producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=producer-1] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2026-03-19T22:36:52.279+05:30  INFO 25332 --- [ad | producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=producer-1] Node -1 disconnected.
+2026-03-19T22:36:52.279+05:30  WARN 25332 --- [ad | producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=producer-1] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+2026-03-19T22:36:52.279+05:30  WARN 25332 --- [ad | producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=producer-1] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2026-03-19T22:36:53.303+05:30  INFO 25332 --- [ad | producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=producer-1] Node -1 disconnected.
+2026-03-19T22:36:53.303+05:30  WARN 25332 --- [ad | producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=producer-1] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+2026-03-19T22:36:53.303+05:30  WARN 25332 --- [ad | producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=producer-1] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2026-03-19T22:36:54.307+05:30  INFO 25332 --- [ad | producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=producer-1] Node -1 disconnected.
+2026-03-19T22:36:54.309+05:30  WARN 25332 --- [ad | producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=producer-1] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+2026-03-19T22:36:54.309+05:30  WARN 25332 --- [ad | producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=producer-1] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2026-03-19T22:36:55.304+05:30  INFO 25332 --- [ad | producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=producer-1] Node -1 disconnected.
+2026-03-19T22:36:55.304+05:30  WARN 25332 --- [ad | producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=producer-1] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+2026-03-19T22:36:55.304+05:30  WARN 25332 --- [ad | producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=producer-1] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2026-03-19T22:36:56.331+05:30  INFO 25332 --- [ad | producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=producer-1] Node -1 disconnected.
+2026-03-19T22:36:56.331+05:30  WARN 25332 --- [ad | producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=producer-1] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+2026-03-19T22:36:56.331+05:30  WARN 25332 --- [ad | producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=producer-1] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2026-03-19T22:36:57.344+05:30  INFO 25332 --- [ad | producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=producer-1] Node -1 disconnected.
+2026-03-19T22:36:57.344+05:30  WARN 25332 --- [ad | producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=producer-1] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+2026-03-19T22:36:57.344+05:30  WARN 25332 --- [ad | producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=producer-1] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2026-03-19T22:36:58.328+05:30  INFO 25332 --- [ad | producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=producer-1] Node -1 disconnected.
+2026-03-19T22:36:58.328+05:30  WARN 25332 --- [ad | producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=producer-1] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+2026-03-19T22:36:58.328+05:30  WARN 25332 --- [ad | producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=producer-1] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2026-03-19T22:36:59.342+05:30  INFO 25332 --- [ad | producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=producer-1] Node -1 disconnected.
+2026-03-19T22:36:59.342+05:30  WARN 25332 --- [ad | producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=producer-1] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+2026-03-19T22:36:59.342+05:30  WARN 25332 --- [ad | producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=producer-1] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2026-03-19T22:37:00.356+05:30  INFO 25332 --- [ad | producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=producer-1] Node -1 disconnected.
+2026-03-19T22:37:00.357+05:30  WARN 25332 --- [ad | producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=producer-1] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+2026-03-19T22:37:00.357+05:30  WARN 25332 --- [ad | producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=producer-1] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2026-03-19T22:37:01.280+05:30  INFO 25332 --- [ad | producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=producer-1] Node -1 disconnected.
+2026-03-19T22:37:01.281+05:30  WARN 25332 --- [ad | producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=producer-1] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+2026-03-19T22:37:01.281+05:30  WARN 25332 --- [ad | producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=producer-1] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2026-03-19T22:37:02.336+05:30  INFO 25332 --- [ad | producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=producer-1] Node -1 disconnected.
+2026-03-19T22:37:02.336+05:30  WARN 25332 --- [ad | producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=producer-1] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+2026-03-19T22:37:02.336+05:30  WARN 25332 --- [ad | producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=producer-1] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2026-03-19T22:37:03.182+05:30  INFO 25332 --- [ad | producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=producer-1] Node -1 disconnected.
+2026-03-19T22:37:03.182+05:30  WARN 25332 --- [ad | producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=producer-1] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+2026-03-19T22:37:03.182+05:30  WARN 25332 --- [ad | producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=producer-1] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2026-03-19T22:37:04.240+05:30  INFO 25332 --- [ad | producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=producer-1] Node -1 disconnected.
+2026-03-19T22:37:04.241+05:30  WARN 25332 --- [ad | producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=producer-1] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+2026-03-19T22:37:04.241+05:30  WARN 25332 --- [ad | producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=producer-1] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2026-03-19T22:37:05.269+05:30  INFO 25332 --- [ad | producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=producer-1] Node -1 disconnected.
+2026-03-19T22:37:05.269+05:30  WARN 25332 --- [ad | producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=producer-1] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+2026-03-19T22:37:05.270+05:30  WARN 25332 --- [ad | producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=producer-1] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2026-03-19T22:37:06.188+05:30  INFO 25332 --- [ad | producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=producer-1] Node -1 disconnected.
+2026-03-19T22:37:06.188+05:30  WARN 25332 --- [ad | producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=producer-1] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+2026-03-19T22:37:06.188+05:30  WARN 25332 --- [ad | producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=producer-1] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2026-03-19T22:37:07.228+05:30  INFO 25332 --- [ad | producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=producer-1] Node -1 disconnected.
+2026-03-19T22:37:07.229+05:30  WARN 25332 --- [ad | producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=producer-1] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+2026-03-19T22:37:07.229+05:30  WARN 25332 --- [ad | producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=producer-1] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2026-03-19T22:37:08.238+05:30  INFO 25332 --- [ad | producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=producer-1] Node -1 disconnected.
+2026-03-19T22:37:08.239+05:30  WARN 25332 --- [ad | producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=producer-1] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+2026-03-19T22:37:08.239+05:30  WARN 25332 --- [ad | producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=producer-1] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2026-03-19T22:37:09.138+05:30  INFO 25332 --- [ad | producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=producer-1] Node -1 disconnected.
+2026-03-19T22:37:09.138+05:30  WARN 25332 --- [ad | producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=producer-1] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+2026-03-19T22:37:09.139+05:30  WARN 25332 --- [ad | producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=producer-1] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2026-03-19T22:37:10.169+05:30  INFO 25332 --- [ad | producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=producer-1] Node -1 disconnected.
+2026-03-19T22:37:10.169+05:30  WARN 25332 --- [ad | producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=producer-1] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+2026-03-19T22:37:10.169+05:30  WARN 25332 --- [ad | producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=producer-1] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2026-03-19T22:37:11.183+05:30  INFO 25332 --- [ad | producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=producer-1] Node -1 disconnected.
+2026-03-19T22:37:11.183+05:30  WARN 25332 --- [ad | producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=producer-1] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+2026-03-19T22:37:11.184+05:30  WARN 25332 --- [ad | producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=producer-1] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2026-03-19T22:37:12.041+05:30  INFO 25332 --- [ad | producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=producer-1] Node -1 disconnected.
+2026-03-19T22:37:12.041+05:30  WARN 25332 --- [ad | producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=producer-1] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+2026-03-19T22:37:12.041+05:30  WARN 25332 --- [ad | producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=producer-1] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+Hibernate: select t1_0.id,t1_0.amount,t1_0.created_at,t1_0.from_wallet,t1_0.idempotency_key,t1_0.status,t1_0.to_wallet,t1_0.trace_id,t1_0.updated_at from transactions t1_0 where t1_0.status=? and t1_0.created_at<?
+2026-03-19T22:37:13.056+05:30  INFO 25332 --- [ad | producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=producer-1] Node -1 disconnected.
+2026-03-19T22:37:13.056+05:30  WARN 25332 --- [ad | producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=producer-1] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+2026-03-19T22:37:13.056+05:30  WARN 25332 --- [ad | producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=producer-1] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2026-03-19T22:37:13.979+05:30  INFO 25332 --- [ad | producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=producer-1] Node -1 disconnected.
+2026-03-19T22:37:13.979+05:30  WARN 25332 --- [ad | producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=producer-1] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+2026-03-19T22:37:13.979+05:30  WARN 25332 --- [ad | producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=producer-1] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2026-03-19T22:37:15.007+05:30  INFO 25332 --- [ad | producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=producer-1] Node -1 disconnected.
+2026-03-19T22:37:15.008+05:30  WARN 25332 --- [ad | producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=producer-1] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+2026-03-19T22:37:15.008+05:30  WARN 25332 --- [ad | producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=producer-1] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2026-03-19T22:37:15.868+05:30  INFO 25332 --- [ad | producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=producer-1] Node -1 disconnected.
+2026-03-19T22:37:15.870+05:30  WARN 25332 --- [ad | producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=producer-1] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+2026-03-19T22:37:15.870+05:30  WARN 25332 --- [ad | producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=producer-1] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2026-03-19T22:37:16.882+05:30  INFO 25332 --- [ad | producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=producer-1] Node -1 disconnected.
+2026-03-19T22:37:16.882+05:30  WARN 25332 --- [ad | producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=producer-1] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+2026-03-19T22:37:16.882+05:30  WARN 25332 --- [ad | producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=producer-1] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2026-03-19T22:37:17.847+05:30  INFO 25332 --- [ad | producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=producer-1] Node -1 disconnected.
+2026-03-19T22:37:17.847+05:30  WARN 25332 --- [ad | producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=producer-1] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+2026-03-19T22:37:17.847+05:30  WARN 25332 --- [ad | producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=producer-1] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2026-03-19T22:37:18.889+05:30  INFO 25332 --- [ad | producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=producer-1] Node -1 disconnected.
+2026-03-19T22:37:18.889+05:30  WARN 25332 --- [ad | producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=producer-1] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+2026-03-19T22:37:18.889+05:30  WARN 25332 --- [ad | producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=producer-1] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2026-03-19T22:37:19.793+05:30  INFO 25332 --- [ad | producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=producer-1] Node -1 disconnected.
+2026-03-19T22:37:19.793+05:30  WARN 25332 --- [ad | producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=producer-1] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+2026-03-19T22:37:19.793+05:30  WARN 25332 --- [ad | producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=producer-1] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2026-03-19T22:37:19.875+05:30 ERROR 25332 --- [omcat-handler-3] o.s.k.support.LoggingProducerListener    : Exception thrown when sending a message with key='null' and payload='TransactionEvent(transactionId=76cf41e5-2fd2-49cc-ba58-2c63e195a2b0, fromWallet=50486947-4d42-4254-9...' to topic transaction-events:
+
+org.apache.kafka.common.errors.TimeoutException: Topic transaction-events not present in metadata after 60000 ms.
+
+2026-03-19T22:37:19.881+05:30 ERROR 25332 --- [omcat-handler-3] c.a.exception.GlobalExceptionHandler     : An unexpected error occurred
+
+org.springframework.kafka.KafkaException: Send failed
+	at org.springframework.kafka.core.KafkaTemplate.doSend(KafkaTemplate.java:816) ~[spring-kafka-3.2.0.jar:3.2.0]
+	at org.springframework.kafka.core.KafkaTemplate.observeSend(KafkaTemplate.java:773) ~[spring-kafka-3.2.0.jar:3.2.0]
+	at org.springframework.kafka.core.KafkaTemplate.send(KafkaTemplate.java:550) ~[spring-kafka-3.2.0.jar:3.2.0]
+	at com.astrapay.service.WalletService.emitKafkaEvent(WalletService.java:179) ~[classes/:na]
+	at com.astrapay.service.WalletService$1.afterCommit(WalletService.java:171) ~[classes/:na]
+	at org.springframework.transaction.support.TransactionSynchronizationUtils.invokeAfterCommit(TransactionSynchronizationUtils.java:135) ~[spring-tx-6.1.8.jar:6.1.8]
+	at org.springframework.transaction.support.TransactionSynchronizationUtils.triggerAfterCommit(TransactionSynchronizationUtils.java:123) ~[spring-tx-6.1.8.jar:6.1.8]
+	at org.springframework.transaction.support.AbstractPlatformTransactionManager.triggerAfterCommit(AbstractPlatformTransactionManager.java:1006) ~[spring-tx-6.1.8.jar:6.1.8]
+	at org.springframework.transaction.support.AbstractPlatformTransactionManager.processCommit(AbstractPlatformTransactionManager.java:836) ~[spring-tx-6.1.8.jar:6.1.8]
+	at org.springframework.transaction.support.AbstractPlatformTransactionManager.commit(AbstractPlatformTransactionManager.java:758) ~[spring-tx-6.1.8.jar:6.1.8]
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.commitTransactionAfterReturning(TransactionAspectSupport.java:676) ~[spring-tx-6.1.8.jar:6.1.8]
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:426) ~[spring-tx-6.1.8.jar:6.1.8]
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:119) ~[spring-tx-6.1.8.jar:6.1.8]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.1.8.jar:6.1.8]
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:768) ~[spring-aop-6.1.8.jar:6.1.8]
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:720) ~[spring-aop-6.1.8.jar:6.1.8]
+	at com.astrapay.service.WalletService$$SpringCGLIB$$0.transferFunds(<generated>) ~[classes/:na]
+	at com.astrapay.controller.WalletController.transferFunds(WalletController.java:37) ~[classes/:na]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[na:na]
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:255) ~[spring-web-6.1.8.jar:6.1.8]
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:188) ~[spring-web-6.1.8.jar:6.1.8]
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:118) ~[spring-webmvc-6.1.8.jar:6.1.8]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:926) ~[spring-webmvc-6.1.8.jar:6.1.8]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:831) ~[spring-webmvc-6.1.8.jar:6.1.8]
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87) ~[spring-webmvc-6.1.8.jar:6.1.8]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1089) ~[spring-webmvc-6.1.8.jar:6.1.8]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:979) ~[spring-webmvc-6.1.8.jar:6.1.8]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1014) ~[spring-webmvc-6.1.8.jar:6.1.8]
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:914) ~[spring-webmvc-6.1.8.jar:6.1.8]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:590) ~[tomcat-embed-core-10.1.24.jar:6.0]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885) ~[spring-webmvc-6.1.8.jar:6.1.8]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658) ~[tomcat-embed-core-10.1.24.jar:6.0]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:195) ~[tomcat-embed-core-10.1.24.jar:10.1.24]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.24.jar:10.1.24]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51) ~[tomcat-embed-websocket-10.1.24.jar:10.1.24]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.24.jar:10.1.24]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.24.jar:10.1.24]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:110) ~[spring-web-6.1.8.jar:6.1.8]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.24.jar:10.1.24]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.24.jar:10.1.24]
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:108) ~[spring-web-6.1.8.jar:6.1.8]
+	at org.springframework.security.web.FilterChainProxy.lambda$doFilterInternal$3(FilterChainProxy.java:231) ~[spring-security-web-6.3.0.jar:6.3.0]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:365) ~[spring-security-web-6.3.0.jar:6.3.0]
+	at org.springframework.security.web.access.intercept.AuthorizationFilter.doFilter(AuthorizationFilter.java:100) ~[spring-security-web-6.3.0.jar:6.3.0]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.3.0.jar:6.3.0]
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:126) ~[spring-security-web-6.3.0.jar:6.3.0]
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:120) ~[spring-security-web-6.3.0.jar:6.3.0]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.3.0.jar:6.3.0]
+	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:131) ~[spring-security-web-6.3.0.jar:6.3.0]
+	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:85) ~[spring-security-web-6.3.0.jar:6.3.0]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.3.0.jar:6.3.0]
+	at org.springframework.security.web.authentication.AnonymousAuthenticationFilter.doFilter(AnonymousAuthenticationFilter.java:100) ~[spring-security-web-6.3.0.jar:6.3.0]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.3.0.jar:6.3.0]
+	at org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter.doFilter(SecurityContextHolderAwareRequestFilter.java:179) ~[spring-security-web-6.3.0.jar:6.3.0]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.3.0.jar:6.3.0]
+	at org.springframework.security.web.savedrequest.RequestCacheAwareFilter.doFilter(RequestCacheAwareFilter.java:63) ~[spring-security-web-6.3.0.jar:6.3.0]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.3.0.jar:6.3.0]
+	at com.astrapay.config.JwtAuthenticationFilter.doFilterInternal(JwtAuthenticationFilter.java:57) ~[classes/:na]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.8.jar:6.1.8]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.3.0.jar:6.3.0]
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:107) ~[spring-security-web-6.3.0.jar:6.3.0]
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:93) ~[spring-security-web-6.3.0.jar:6.3.0]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.3.0.jar:6.3.0]
+	at org.springframework.web.filter.CorsFilter.doFilterInternal(CorsFilter.java:91) ~[spring-web-6.1.8.jar:6.1.8]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.8.jar:6.1.8]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.3.0.jar:6.3.0]
+	at org.springframework.security.web.header.HeaderWriterFilter.doHeadersAfter(HeaderWriterFilter.java:90) ~[spring-security-web-6.3.0.jar:6.3.0]
+	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:75) ~[spring-security-web-6.3.0.jar:6.3.0]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.8.jar:6.1.8]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.3.0.jar:6.3.0]
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:82) ~[spring-security-web-6.3.0.jar:6.3.0]
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:69) ~[spring-security-web-6.3.0.jar:6.3.0]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.3.0.jar:6.3.0]
+	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:62) ~[spring-security-web-6.3.0.jar:6.3.0]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.8.jar:6.1.8]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.3.0.jar:6.3.0]
+	at org.springframework.security.web.session.DisableEncodeUrlFilter.doFilterInternal(DisableEncodeUrlFilter.java:42) ~[spring-security-web-6.3.0.jar:6.3.0]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.8.jar:6.1.8]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.3.0.jar:6.3.0]
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:233) ~[spring-security-web-6.3.0.jar:6.3.0]
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:191) ~[spring-security-web-6.3.0.jar:6.3.0]
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113) ~[spring-web-6.1.8.jar:6.1.8]
+	at org.springframework.web.servlet.handler.HandlerMappingIntrospector.lambda$createCacheFilter$3(HandlerMappingIntrospector.java:195) ~[spring-webmvc-6.1.8.jar:6.1.8]
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113) ~[spring-web-6.1.8.jar:6.1.8]
+	at org.springframework.web.filter.CompositeFilter.doFilter(CompositeFilter.java:74) ~[spring-web-6.1.8.jar:6.1.8]
+	at org.springframework.security.config.annotation.web.configuration.WebMvcSecurityConfiguration$CompositeFilterChainProxy.doFilter(WebMvcSecurityConfiguration.java:230) ~[spring-security-config-6.3.0.jar:6.3.0]
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:352) ~[spring-web-6.1.8.jar:6.1.8]
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:268) ~[spring-web-6.1.8.jar:6.1.8]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.24.jar:10.1.24]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.24.jar:10.1.24]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-6.1.8.jar:6.1.8]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.8.jar:6.1.8]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.24.jar:10.1.24]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.24.jar:10.1.24]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-6.1.8.jar:6.1.8]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.8.jar:6.1.8]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.24.jar:10.1.24]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.24.jar:10.1.24]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-6.1.8.jar:6.1.8]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.8.jar:6.1.8]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.24.jar:10.1.24]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.24.jar:10.1.24]
+	at com.astrapay.filter.TraceFilter.doFilter(TraceFilter.java:37) ~[classes/:na]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.24.jar:10.1.24]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.24.jar:10.1.24]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167) ~[tomcat-embed-core-10.1.24.jar:10.1.24]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90) ~[tomcat-embed-core-10.1.24.jar:10.1.24]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:482) ~[tomcat-embed-core-10.1.24.jar:10.1.24]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115) ~[tomcat-embed-core-10.1.24.jar:10.1.24]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93) ~[tomcat-embed-core-10.1.24.jar:10.1.24]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74) ~[tomcat-embed-core-10.1.24.jar:10.1.24]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344) ~[tomcat-embed-core-10.1.24.jar:10.1.24]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:389) ~[tomcat-embed-core-10.1.24.jar:10.1.24]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63) ~[tomcat-embed-core-10.1.24.jar:10.1.24]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:896) ~[tomcat-embed-core-10.1.24.jar:10.1.24]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1741) ~[tomcat-embed-core-10.1.24.jar:10.1.24]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52) ~[tomcat-embed-core-10.1.24.jar:10.1.24]
+	at java.base/java.lang.VirtualThread.run(VirtualThread.java:329) ~[na:na]
+Caused by: org.apache.kafka.common.errors.TimeoutException: Topic transaction-events not present in metadata after 60000 ms.
+
+Hibernate: select a1_0.id,a1_0.balance,a1_0.currency,a1_0.status,a1_0.user_id,a1_0.version,a1_0.wallet_address from accounts a1_0
+Hibernate: delete from accounts where id=? and version=?
+Hibernate: delete from accounts where id=? and version=?
+Hibernate: select u1_0.id,u1_0.email,u1_0.password,u1_0.username from users u1_0
+Hibernate: select r1_0.user_id,r1_0.role from user_roles r1_0 where r1_0.user_id=?
+Hibernate: select r1_0.user_id,r1_0.role from user_roles r1_0 where r1_0.user_id=?
+Hibernate: delete from user_roles where user_id=?
+Hibernate: delete from user_roles where user_id=?
+Hibernate: delete from users where id=?
+Hibernate: delete from users where id=?
+[ERROR] Tests run: 1, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 83.00 s <<< FAILURE! -- in com.astrapay.integration.EndToEndTransferTest
+[ERROR] com.astrapay.integration.EndToEndTransferTest.testPostmanGauntlet -- Time elapsed: 67.11 s <<< FAILURE!
+java.lang.AssertionError: 
+1 expectation failed.
+Expected status code <200> but was <500>.
+
+	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:502)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:486)
+	at org.codehaus.groovy.reflection.CachedConstructor.invoke(CachedConstructor.java:73)
+	at org.codehaus.groovy.runtime.callsite.ConstructorSite$ConstructorSiteNoUnwrapNoCoerce.callConstructor(ConstructorSite.java:108)
+	at org.codehaus.groovy.runtime.callsite.CallSiteArray.defaultCallConstructor(CallSiteArray.java:57)
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.callConstructor(AbstractCallSite.java:263)
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.callConstructor(AbstractCallSite.java:277)
+	at io.restassured.internal.ResponseSpecificationImpl$HamcrestAssertionClosure.validate(ResponseSpecificationImpl.groovy:512)
+	at io.restassured.internal.ResponseSpecificationImpl$HamcrestAssertionClosure$validate$1.call(Unknown Source)
+	at io.restassured.internal.ResponseSpecificationImpl.validateResponseIfRequired(ResponseSpecificationImpl.groovy:696)
+	at io.restassured.internal.ResponseSpecificationImpl.this$2$validateResponseIfRequired(ResponseSpecificationImpl.groovy)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.codehaus.groovy.runtime.callsite.PlainObjectMetaMethodSite.doInvoke(PlainObjectMetaMethodSite.java:43)
+	at org.codehaus.groovy.runtime.callsite.PogoMetaMethodSite$PogoCachedMethodSiteNoUnwrapNoCoerce.invoke(PogoMetaMethodSite.java:198)
+	at org.codehaus.groovy.runtime.callsite.PogoMetaMethodSite.callCurrent(PogoMetaMethodSite.java:62)
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.callCurrent(AbstractCallSite.java:185)
+	at io.restassured.internal.ResponseSpecificationImpl.statusCode(ResponseSpecificationImpl.groovy:135)
+	at io.restassured.specification.ResponseSpecification$statusCode$0.callCurrent(Unknown Source)
+	at io.restassured.internal.ResponseSpecificationImpl.statusCode(ResponseSpecificationImpl.groovy:143)
+	at io.restassured.internal.ValidatableResponseOptionsImpl.statusCode(ValidatableResponseOptionsImpl.java:89)
+	at com.astrapay.integration.EndToEndTransferTest.testPostmanGauntlet(EndToEndTransferTest.java:123)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+
+[INFO] 
+[INFO] Results:
+[INFO] 
+[ERROR] Failures: 
+[ERROR]   EndToEndTransferTest.testPostmanGauntlet:123 1 expectation failed.
+Expected status code <200> but was <500>.
+
+[INFO] 
+[ERROR] Tests run: 1, Failures: 1, Errors: 0, Skipped: 0
+[INFO] 
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  01:37 min
+[INFO] Finished at: 2026-03-19T22:37:20+05:30
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-surefire-plugin:3.2.5:test (default-test) on project astra-pay: There are test failures.
+[ERROR] 
+[ERROR] Please refer to C:\Users\Atharva Shivari\OneDrive\Desktop\Work\Astra-Pay\backend\target\surefire-reports for the individual test results.
+[ERROR] Please refer to dump files (if any exist) [date].dump, [date]-jvmRun[N].dump and [date].dumpstream.
+[ERROR] -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException
+
+C:\Users\Atharva Shivari\OneDrive\Desktop\Work\Astra-Pay\backend>if ERRORLEVEL 1 goto error 
+
+C:\Users\Atharva Shivari\OneDrive\Desktop\Work\Astra-Pay\backend>set ERROR_CODE=1 
+
+C:\Users\Atharva Shivari\OneDrive\Desktop\Work\Astra-Pay\backend>if not "" == "" goto skipRcPost 
+
+C:\Users\Atharva Shivari\OneDrive\Desktop\Work\Astra-Pay\backend>if "" == "on" pause
+
+C:\Users\Atharva Shivari\OneDrive\Desktop\Work\Astra-Pay\backend>if "" == "on" exit 1 
+
+C:\Users\Atharva Shivari\OneDrive\Desktop\Work\Astra-Pay\backend>exit /B 1 

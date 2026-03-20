@@ -15,7 +15,7 @@ import java.util.Map;
  */
 @Slf4j
 @RestController
-@RequestMapping("/api/v1/wallets")
+@RequestMapping("/api/v1/wallet")
 @RequiredArgsConstructor
 public class WalletController {
 
@@ -44,5 +44,31 @@ public class WalletController {
                 "message", "Transfer successful",
                 "idempotencyKey", idempotencyKey
         ));
+    }
+
+    /**
+     * Retrieves the balance of the authenticated user's wallet.
+     *
+     * @param principal the authenticated user
+     * @return the balance details
+     */
+    @GetMapping("/balance")
+    public ResponseEntity<Map<String, Object>> getBalance(java.security.Principal principal) {
+        String username = principal.getName();
+        return walletService.getAccountByUsername(username)
+                .map(account -> ResponseEntity.ok(Map.<String, Object>of(
+                        "walletAddress", account.getWalletAddress(),
+                        "balance", account.getBalance()
+                )))
+                .orElseGet(() -> ResponseEntity.status(404).body(Map.of("error", "Wallet not found", "balance", 0)));
+    }
+
+    /**
+     * Retrieves recent transactions for the authenticated user's wallet.
+     */
+    @GetMapping("/transactions")
+    public ResponseEntity<?> getTransactions(java.security.Principal principal) {
+        String username = principal.getName();
+        return ResponseEntity.ok(walletService.getTransactionsByUsername(username));
     }
 }
