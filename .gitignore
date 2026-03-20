@@ -23,3 +23,5 @@ frontend/yarn-error.log*
 *.bak
 docs/p.md
 docs/todo.md
+*.log
+*.txt
