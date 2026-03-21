@@ -1,10 +1,22 @@
 package com.astrapay.service;
 
-import com.astrapay.dto.TransactionEvent;
-import com.astrapay.exception.AccountNotFoundException;
-import com.astrapay.exception.InsufficientFundsException;
-import com.astrapay.model.Account;
-import com.astrapay.repository.AccountRepository;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.anyString;
+import static org.mockito.ArgumentMatchers.eq;
+import static org.mockito.Mockito.doNothing;
+import static org.mockito.Mockito.doThrow;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.never;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
+
+import java.math.BigDecimal;
+import java.util.Optional;
+import java.util.concurrent.CompletableFuture;
+
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -18,15 +30,10 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
 
-import java.math.BigDecimal;
-import java.util.Optional;
-import java.util.concurrent.CompletableFuture;
-
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.mockito.ArgumentMatchers.anyString;
-import static org.mockito.Mockito.*;
+import com.astrapay.dto.TransactionEvent;
+import com.astrapay.exception.InsufficientFundsException;
+import com.astrapay.model.Account;
+import com.astrapay.repository.AccountRepository;
 
 @ExtendWith(MockitoExtension.class)
 class WalletServiceTest {
