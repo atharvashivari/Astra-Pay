@@ -1,1 +1,20 @@
 @import "tailwindcss";
+
+@theme {
+  --color-background: #050505;
+  --color-primary: #FF4D8D;
+  --color-secondary: #8B5CF6;
+}
+
+@utility glass {
+  backdrop-filter: blur(24px);
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+body {
+  background-color: var(--color-background);
+  color: white;
+  margin: 0;
+  font-family: 'Inter', system-ui, Avenir, Helvetica, Arial, sans-serif;
+}
