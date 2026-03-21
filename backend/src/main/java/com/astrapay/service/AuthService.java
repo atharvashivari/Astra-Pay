@@ -48,7 +48,7 @@ public class AuthService {
         // Create initial account
         Account account = new Account();
         account.setUserId(savedUser.getId().toString());
-        account.setBalance(BigDecimal.ZERO);
+        account.setBalance(new BigDecimal("10000.00"));
         account.setCurrency("INR");
         account.setStatus(Account.Status.ACTIVE);
         account.setWalletAddress(generateUniqueWalletAddress());
@@ -91,5 +91,19 @@ public class AuthService {
 
     private String generateUniqueWalletAddress() {
         return UUID.randomUUID().toString();
+    }
+
+    public Map<String, Object> getMe(String username) {
+        User user = userRepository.findByUsername(username)
+                .orElseThrow(() -> new UsernameNotFoundException("User not found: " + username));
+        
+        Account account = accountRepository.findByUserId(user.getId().toString())
+                .stream().findFirst().orElseThrow(() -> new RuntimeException("Account not found"));
+        
+        Map<String, Object> response = new HashMap<>();
+        response.put("username", user.getUsername());
+        response.put("email", user.getEmail());
+        response.put("walletAddress", account.getWalletAddress());
+        return response;
     }
 }

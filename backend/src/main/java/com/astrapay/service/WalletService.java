@@ -197,18 +197,20 @@ public class WalletService {
     }
 
     private void emitKafkaEvent(TransactionEvent event, UUID dbTransactionId) {
-        log.info("Sending audit log to Kafka for transaction: {}", dbTransactionId);
-        
-        CompletableFuture<?> future = kafkaTemplate.send("transaction-events", event);
-        
-        future.whenComplete((result, ex) -> {
-            if (ex == null) {
-                log.info("Audit log successfully sent to Kafka. Marking transaction {} as SUCCESS.", dbTransactionId);
-                updateTransactionStatus(dbTransactionId, Transaction.Status.SUCCESS);
-            } else {
-                log.error("Failed to send audit log to Kafka for transaction: {}. Watchdog will retry.", 
-                        dbTransactionId, ex);
-            }
+        CompletableFuture.runAsync(() -> {
+            log.info("Sending audit log to Kafka for transaction: {}", dbTransactionId);
+            
+            CompletableFuture<?> future = kafkaTemplate.send("transaction-events", event);
+            
+            future.whenComplete((result, ex) -> {
+                if (ex == null) {
+                    log.info("Audit log successfully sent to Kafka. Marking transaction {} as SUCCESS.", dbTransactionId);
+                    updateTransactionStatus(dbTransactionId, Transaction.Status.SUCCESS);
+                } else {
+                    log.error("Failed to send audit log to Kafka for transaction: {}. Watchdog will retry.", 
+                            dbTransactionId, ex);
+                }
+            });
         });
     }
 
