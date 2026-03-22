@@ -34,7 +34,7 @@ public class WalletController {
         log.info("Received transfer request from '{}' to '{}' for amount {} with key '{}'",
                 request.getFromWallet(), request.getToWallet(), request.getAmount(), idempotencyKey);
 
-        walletService.transferFunds(
+        com.astrapay.model.Transaction tx = walletService.transferFunds(
                 request.getFromWallet(),
                 request.getToWallet(),
                 request.getAmount(),
@@ -42,7 +42,8 @@ public class WalletController {
 
         return ResponseEntity.ok(Map.of(
                 "message", "Transfer successful",
-                "idempotencyKey", idempotencyKey
+                "idempotencyKey", idempotencyKey,
+                "transactionId", tx.getId().toString()
         ));
     }
 
@@ -70,5 +71,15 @@ public class WalletController {
     public ResponseEntity<?> getTransactions(java.security.Principal principal) {
         String username = principal.getName();
         return ResponseEntity.ok(walletService.getTransactionsByUsername(username));
+    }
+
+    /**
+     * Retrieves a single transaction by ID.
+     */
+    @GetMapping("/transactions/{id}")
+    public ResponseEntity<?> getTransactionById(@PathVariable java.util.UUID id) {
+        return walletService.getTransactionById(id)
+                .map(ResponseEntity::ok)
+                .orElseGet(() -> ResponseEntity.notFound().build());
     }
 }
