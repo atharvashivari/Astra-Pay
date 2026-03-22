@@ -68,6 +68,13 @@ public class WalletService {
     }
 
     /**
+     * Retrieves a single transaction by ID.
+     */
+    public Optional<Transaction> getTransactionById(UUID id) {
+        return transactionRepository.findById(id);
+    }
+
+    /**
      * Transfers {@code amount} from {@code fromWallet} to {@code toWallet} atomically.
      *
      * @param fromWallet     wallet address of the sender
@@ -80,10 +87,10 @@ public class WalletService {
      * @throws IllegalStateException         if an account is not ACTIVE
      */
     @Transactional
-    public void transferFunds(String fromWallet,
-                              String toWallet,
-                              BigDecimal amount,
-                              String idempotencyKey) {
+    public Transaction transferFunds(String fromWallet,
+                                     String toWallet,
+                                     BigDecimal amount,
+                                     String idempotencyKey) {
 
         // ── Step 1: Idempotency guard ──────────────────────────────────────────────
         checkIdempotency(idempotencyKey);
@@ -104,7 +111,7 @@ public class WalletService {
                 .toWallet(toWallet)
                 .amount(amount)
                 .idempotencyKey(idempotencyKey)
-                .status(Transaction.Status.PENDING)
+                .status(Transaction.Status.SUCCESS)
                 .traceId(MDC.get("traceId"))
                 .build();
         transaction = transactionRepository.save(transaction);
@@ -124,6 +131,24 @@ public class WalletService {
 
         // ── Step 7: Send transaction event after commit ────────────────────────
         sendAuditLog(transaction);
+
+        return transaction;
+    }
+
+    /**
+     * Securely credits a user's wallet. Used primarily by payment webhooks.
+     */
+    @Transactional
+    public void credit(String username, BigDecimal amount) {
+        Account userAccount = getAccountByUsername(username)
+                .orElseThrow(() -> new AccountNotFoundException("Account not found for user: " + username));
+        
+        Account account = accountRepository.findWithLockByWalletAddress(userAccount.getWalletAddress())
+                .orElseThrow(() -> new AccountNotFoundException("Account lock failed"));
+                
+        account.setBalance(account.getBalance().add(amount));
+        accountRepository.save(account);
+        log.info("Successfully credited wallet {} belonging to user {} with amount {}", account.getWalletAddress(), username, amount);
     }
 
     private void checkIdempotency(String idempotencyKey) {
@@ -222,7 +247,7 @@ public class WalletService {
     }
 
     /**
-     * Loki Watchdog: Retriggers transactions stuck in PENDING for > 5 minutes.
+     * Loki Watchdog: Scans for stuck PENDING transactions and auto-resolves them to SUCCESS.
      */
     @Scheduled(fixedRate = 60000) // Every minute
     public void retriggerPendingTransactions() {
@@ -232,17 +257,8 @@ public class WalletService {
                 Transaction.Status.PENDING, fiveMinutesAgo);
 
         for (Transaction t : stuckTransactions) {
-            log.warn("Loki Watchdog: Found stuck transaction {}. Retriggering Kafka event.", t.getId());
-            TransactionEvent event = TransactionEvent.builder()
-                    .transactionId(t.getId().toString())
-                    .fromWallet(t.getFromWallet())
-                    .toWallet(t.getToWallet())
-                    .amount(t.getAmount())
-                    .timestamp(Instant.now().toString())
-                    .status("SUCCESS")
-                    .traceId(t.getTraceId())
-                    .build();
-            emitKafkaEvent(event, t.getId());
+            log.warn("Loki Watchdog: Auto-resolving stuck transaction {} to SUCCESS.", t.getId());
+            updateTransactionStatus(t.getId(), Transaction.Status.SUCCESS);
         }
     }
 }
