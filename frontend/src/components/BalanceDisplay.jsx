@@ -2,6 +2,8 @@ import React, { useEffect } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import apiClient from '../api/axios';
 import { motion, useSpring, useTransform } from 'framer-motion';
+import { Plus } from 'lucide-react';
+import AddFundsModal from './AddFundsModal';
 
 // Helper component for Framer Motion rolling number effect
 const RollingNumber = ({ value }) => {
@@ -17,6 +19,8 @@ const RollingNumber = ({ value }) => {
 };
 
 const BalanceDisplay = () => {
+  const [isAddFundsOpen, setIsAddFundsOpen] = React.useState(false);
+
   const { data, isLoading, error } = useQuery({
     queryKey: ['balance'],
     queryFn: async () => {
@@ -43,6 +47,17 @@ const BalanceDisplay = () => {
           <RollingNumber value={data?.balance || 0} />
         )}
       </div>
+
+      <div className="absolute bottom-8 right-8 z-20">
+        <button 
+          onClick={() => setIsAddFundsOpen(true)}
+          className="bg-white/10 hover:bg-white/20 border border-white/20 backdrop-blur-md text-white px-5 py-3 rounded-full font-bold flex items-center gap-2 shadow-[0_0_15px_rgba(255,255,255,0.1)] transition-all hover:scale-105"
+        >
+          <Plus size={18} className="text-primary"/> Add Funds
+        </button>
+      </div>
+
+      <AddFundsModal isOpen={isAddFundsOpen} onClose={() => setIsAddFundsOpen(false)} />
     </motion.div>
   );
 };

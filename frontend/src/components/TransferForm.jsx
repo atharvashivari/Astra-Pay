@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import apiClient from '../api/axios';
-import { useMutation, useQueryClient } from '@tanstack/react-query';
+import { useQueryClient } from '@tanstack/react-query';
 import toast from 'react-hot-toast';
+import { useTransfer } from '../hooks/useTransfer';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Send, Search } from 'lucide-react';
 
@@ -42,35 +43,25 @@ const TransferForm = () => {
     }
   }, [searchTerm]);
 
-  const transferMutation = useMutation({
-    mutationFn: async (transferData) => {
-      const idempotencyKey = uuidv4();
-      return apiClient.post('/wallet/transfer', transferData, {
-        headers: {
-          'X-Idempotency-Key': idempotencyKey,
-        },
-      });
-    },
-    onSuccess: () => {
-      toast.success('Transfer Successful!');
-      queryClient.invalidateQueries({ queryKey: ['balance'] });
-      queryClient.invalidateQueries({ queryKey: ['transactions'] });
-      setToWallet('');
-      setAmount('');
-      setSearchTerm('');
-    },
-    onError: (error) => {
-      toast.error('Transfer Failed: ' + (error.response?.data?.message || 'Insufficient Funds'));
-    },
-  });
+  const [isSubmittingLocal, setIsSubmittingLocal] = useState(false);
+  const { transferMutation } = useTransfer();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!fromWallet) {
-      toast.error('Could not determine your wallet address. Please refresh and try again.');
+    if (!fromWallet || isSubmittingLocal) {
+      if (!fromWallet) toast.error('Could not determine your wallet address. Please refresh and try again.');
       return;
     }
-    transferMutation.mutate({ fromWallet, toWallet, amount: parseFloat(amount) });
+    
+    setIsSubmittingLocal(true);
+    transferMutation.mutate({ fromWallet, toWallet, amount: parseFloat(amount) }, {
+      onSettled: () => setIsSubmittingLocal(false),
+      onSuccess: () => {
+        setToWallet('');
+        setAmount('');
+        setSearchTerm('');
+      }
+    });
   };
 
   return (
@@ -164,12 +155,12 @@ const TransferForm = () => {
           whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.98 }}
           type="submit"
-          disabled={transferMutation.isPending || !fromWallet}
+          disabled={transferMutation.isPending || isSubmittingLocal || !fromWallet}
           className="mt-auto w-full bg-gradient-to-r from-primary to-secondary text-white font-black py-4 px-4 rounded-xl shadow-[0_0_20px_rgba(255,77,141,0.25)] hover:shadow-[0_0_30px_rgba(255,77,141,0.5)] disabled:opacity-50 disabled:shadow-none transition-all relative overflow-hidden group focus:outline-none flex outline-none"
         >
           <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out" />
           <span className="relative z-10 flex flex-1 items-center justify-center gap-2">
-            {transferMutation.isPending ? 'Processing Encryption...' : (
+            {transferMutation.isPending || isSubmittingLocal ? 'Processing Encryption...' : (
               <>Send Completely <Send size={18} /></>
             )}
           </span>
