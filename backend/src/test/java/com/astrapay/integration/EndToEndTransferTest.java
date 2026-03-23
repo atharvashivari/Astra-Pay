@@ -17,6 +17,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.server.LocalServerPort;
 import org.springframework.kafka.test.context.EmbeddedKafka;
+import org.springframework.test.context.TestPropertySource;
 
 import java.math.BigDecimal;
 import java.util.UUID;
@@ -25,7 +26,8 @@ import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.equalTo;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT)
-@EmbeddedKafka(partitions = 1, brokerProperties = { "listeners=PLAINTEXT://localhost:9092", "port=9092" })
+@EmbeddedKafka(partitions = 1, topics = {"transaction-events"})
+@TestPropertySource(properties = {"spring.kafka.bootstrap-servers=${spring.embedded.kafka.brokers}"})
 public class EndToEndTransferTest {
 
     @LocalServerPort
@@ -120,7 +122,7 @@ public class EndToEndTransferTest {
                 .contentType(ContentType.JSON)
                 .body(transferRequest)
                 .when()
-                .post("/api/v1/wallets/transfer")
+                .post("/api/v1/wallet/transfer")
                 .then()
                 .statusCode(200)
                 .body("message", equalTo("Transfer successful"));
@@ -132,7 +134,7 @@ public class EndToEndTransferTest {
                 .contentType(ContentType.JSON)
                 .body(transferRequest)
                 .when()
-                .post("/api/v1/wallets/transfer")
+                .post("/api/v1/wallet/transfer")
                 .then()
                 .statusCode(409);
 
@@ -146,7 +148,7 @@ public class EndToEndTransferTest {
                 .contentType(ContentType.JSON)
                 .body(transferRequest)
                 .when()
-                .post("/api/v1/wallets/transfer")
+                .post("/api/v1/wallet/transfer")
                 .then()
                 .statusCode(400);
     }
