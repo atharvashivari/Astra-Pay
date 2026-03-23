@@ -44,11 +44,12 @@ export const useTransfer = () => {
       }
       toast.error('Transfer Failed: ' + (err.response?.data?.message || 'Insufficient Funds'));
     },
-    onSuccess: (data) => {
-      // For immediate sync, we invalidate to refetch the true balance and the tx list
+    onSettled: () => {
+      // Refetch the balance to sync with the server
       queryClient.invalidateQueries({ queryKey: ['balance'] });
       queryClient.invalidateQueries({ queryKey: ['transactions'] });
-      
+    },
+    onSuccess: (data) => {
       // If backend returned tx ID we set it to poll
       if (data.transactionId) {
         setCreatedTxId(data.transactionId);
