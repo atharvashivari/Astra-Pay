@@ -112,6 +112,7 @@ public class WalletService {
                 .amount(amount)
                 .idempotencyKey(idempotencyKey)
                 .status(Transaction.Status.SUCCESS)
+                .type(Transaction.Type.TRANSFER)
                 .traceId(MDC.get("traceId"))
                 .build();
         transaction = transactionRepository.save(transaction);
@@ -139,16 +140,27 @@ public class WalletService {
      * Securely credits a user's wallet. Used primarily by payment webhooks.
      */
     @Transactional
-    public void credit(String username, BigDecimal amount) {
-        Account userAccount = getAccountByUsername(username)
-                .orElseThrow(() -> new AccountNotFoundException("Account not found for user: " + username));
-        
-        Account account = accountRepository.findWithLockByWalletAddress(userAccount.getWalletAddress())
-                .orElseThrow(() -> new AccountNotFoundException("Account lock failed"));
+    public void creditFunds(String walletAddress, BigDecimal amount) {
+        Account account = accountRepository.findWithLockByWalletAddress(walletAddress)
+                .orElseThrow(() -> new AccountNotFoundException("Account not found: " + walletAddress));
                 
         account.setBalance(account.getBalance().add(amount));
         accountRepository.save(account);
-        log.info("Successfully credited wallet {} belonging to user {} with amount {}", account.getWalletAddress(), username, amount);
+        
+        Transaction transaction = Transaction.builder()
+                .fromWallet("EXTERNAL_SYSTEM")
+                .toWallet(walletAddress)
+                .amount(amount)
+                .idempotencyKey("deposit_" + UUID.randomUUID().toString())
+                .status(Transaction.Status.SUCCESS)
+                .type(Transaction.Type.DEPOSIT)
+                .traceId(MDC.get("traceId"))
+                .build();
+        transaction = transactionRepository.save(transaction);
+        
+        log.info("Successfully credited wallet {} with amount {}", walletAddress, amount);
+        
+        sendAuditLog(transaction);
     }
 
     private void checkIdempotency(String idempotencyKey) {
@@ -210,6 +222,7 @@ public class WalletService {
                 .amount(transaction.getAmount())
                 .timestamp(Instant.now().toString())
                 .status("SUCCESS")
+                .type(transaction.getType() != null ? transaction.getType().name() : "TRANSFER")
                 .traceId(transaction.getTraceId())
                 .build();
 

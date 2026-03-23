@@ -52,4 +52,12 @@ public class Transaction {
     public enum Status {
         PENDING, SUCCESS, FAILED
     }
+
+    public enum Type {
+        TRANSFER, DEPOSIT
+    }
+
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = true)
+    private Type type;
 }
