@@ -1,0 +1,2 @@
+backend/src/main/resources/templates/** linguist-documentation
+frontend/dist/** linguist-vendored
