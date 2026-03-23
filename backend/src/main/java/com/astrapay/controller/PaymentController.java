@@ -1,6 +1,8 @@
 package com.astrapay.controller;
 
 import com.astrapay.service.PaymentService;
+import com.astrapay.service.WalletService;
+import com.astrapay.model.Account;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -14,6 +16,7 @@ import java.security.Principal;
 public class PaymentController {
 
     private final PaymentService paymentService;
+    private final WalletService walletService;
 
     @PostMapping("/create-order")
     public ResponseEntity<?> createOrder(@RequestBody Map<String, Object> payload, Principal principal) {
@@ -34,5 +37,14 @@ public class PaymentController {
         } else {
             return ResponseEntity.badRequest().body(Map.of("error", "Invalid signature or verification failed"));
         }
+    }
+
+    @PostMapping("/mock-success")
+    public ResponseEntity<?> mockSuccess(@RequestBody Map<String, Object> payload, Principal principal) {
+        BigDecimal amount = new BigDecimal(payload.get("amount").toString());
+        Account account = walletService.getAccountByUsername(principal.getName())
+                .orElseThrow(() -> new RuntimeException("Account not found"));
+        walletService.creditFunds(account.getWalletAddress(), amount);
+        return ResponseEntity.ok(Map.of("status", "success", "message", "Mock payment successful"));
     }
 }

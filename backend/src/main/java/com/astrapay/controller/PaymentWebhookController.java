@@ -1,6 +1,7 @@
 package com.astrapay.controller;
 
 import com.astrapay.service.WalletService;
+import com.astrapay.model.Account;
 import com.razorpay.Utils;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -46,7 +47,9 @@ public class PaymentWebhookController {
                 String username = notes.getString("username");
 
                 log.info("Payment captured for user {}. Crediting {} INR", username, amount);
-                walletService.credit(username, amount);
+                Account account = walletService.getAccountByUsername(username)
+                        .orElseThrow(() -> new RuntimeException("Account not found for user: " + username));
+                walletService.creditFunds(account.getWalletAddress(), amount);
             }
 
             return ResponseEntity.ok("OK");

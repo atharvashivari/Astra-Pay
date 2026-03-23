@@ -1,5 +1,6 @@
 package com.astrapay.service;
 
+import com.astrapay.model.Account;
 import com.razorpay.Order;
 import com.razorpay.RazorpayClient;
 import com.razorpay.RazorpayException;
@@ -19,17 +20,14 @@ import java.math.BigDecimal;
 @RequiredArgsConstructor
 public class PaymentService {
 
-    @Value("${razorpay.key.id}")
-    private String keyId;
-
     @Value("${razorpay.key.secret}")
     private String keySecret;
 
     private final WalletService walletService;
+    private final RazorpayClient razorpayClient;
 
     public String createOrder(BigDecimal amount, String username) {
         try {
-            RazorpayClient razorpay = new RazorpayClient(keyId, keySecret);
             JSONObject orderRequest = new JSONObject();
             // Razorpay expects amount in lowest denomination (paise)
             orderRequest.put("amount", amount.multiply(new BigDecimal("100")).intValue());
@@ -40,7 +38,7 @@ public class PaymentService {
             notes.put("username", username);
             orderRequest.put("notes", notes);
 
-            Order order = razorpay.orders.create(orderRequest);
+            Order order = razorpayClient.orders.create(orderRequest);
             return order.get("id");
         } catch (RazorpayException e) {
             log.error("Razorpay Error: ", e);
@@ -63,8 +61,7 @@ public class PaymentService {
             }
 
             // 2. Fetch Payment directly from Razorpay to get the true amount
-            RazorpayClient razorpay = new RazorpayClient(keyId, keySecret);
-            Payment payment = razorpay.payments.fetch(paymentId);
+            Payment payment = razorpayClient.payments.fetch(paymentId);
             
             // 3. Prevent duplicate credit (assuming frontend might call this AND webhook is alive)
             // But since local testing has no webhook, we just credit the wallet.
@@ -76,8 +73,8 @@ public class PaymentService {
             
             log.info("Frontend Verification successful for user {}. Crediting {} INR", username, amount);
             // using the paymentId as idempotencyKey to prevent double credit if webhook also fires!
-            // Wait, WalletService.credit doesn't currently take an idempotency key, but we can just call it.
-            walletService.credit(username, amount);
+            Account account = walletService.getAccountByUsername(username).orElseThrow(() -> new RuntimeException("Account not found"));
+            walletService.creditFunds(account.getWalletAddress(), amount);
 
             return true;
         } catch (Exception e) {
