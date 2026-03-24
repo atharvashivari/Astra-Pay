@@ -28,6 +28,9 @@ import java.time.Duration;
 import java.time.Instant;
 import java.util.List;
 import java.util.Optional;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.util.Map;
 import java.util.UUID;
 import java.util.concurrent.CompletableFuture;
 
@@ -273,5 +276,29 @@ public class WalletService {
             log.warn("Loki Watchdog: Auto-resolving stuck transaction {} to SUCCESS.", t.getId());
             updateTransactionStatus(t.getId(), Transaction.Status.SUCCESS);
         }
+    }
+
+    /**
+     * Calculates the sum of credits and debits for the current month.
+     */
+    public Map<String, BigDecimal> getMonthlyStats(String username) {
+        User user = userRepository.findByUsername(username)
+                .orElseThrow(() -> new AccessDeniedException("User not found: " + username));
+        Account account = accountRepository.findByUserId(user.getId().toString())
+                .stream().findFirst()
+                .orElseThrow(() -> new AccountNotFoundException("Account not found for user: " + username));
+
+        Instant startOfMonth = LocalDate.now().withDayOfMonth(1)
+                .atStartOfDay(ZoneId.systemDefault())
+                .toInstant();
+        
+        BigDecimal credits = transactionRepository.sumCreditsForMonth(account.getWalletAddress(), startOfMonth);
+        BigDecimal debits = transactionRepository.sumDebitsForMonth(account.getWalletAddress(), startOfMonth);
+        
+        return Map.of(
+            "credits", credits,
+            "debits", debits,
+            "net", credits.subtract(debits)
+        );
     }
 }
