@@ -16,6 +16,8 @@ frontend/.env.production.local
 frontend/npm-debug.log*
 frontend/yarn-debug.log*
 frontend/yarn-error.log*
+frontend/playwright-report/
+frontend/test-results/
 
 # Misc
 .DS_Store
@@ -25,3 +27,4 @@ docs/p.md
 docs/todo.md
 *.log
 *.txt
+test-results/
