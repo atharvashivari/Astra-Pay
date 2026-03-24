@@ -19,4 +19,5 @@ public class TransactionEvent {
     private String timestamp;
     private String status;
     private String traceId;
+    private String type;
 }

@@ -48,7 +48,7 @@ public class AuthService {
         // Create initial account
         Account account = new Account();
         account.setUserId(savedUser.getId().toString());
-        account.setBalance(new BigDecimal("10000.00"));
+        account.setBalance(BigDecimal.ZERO);
         account.setCurrency("INR");
         account.setStatus(Account.Status.ACTIVE);
         account.setWalletAddress(generateUniqueWalletAddress());
