@@ -24,10 +24,10 @@ const AnimatedRoutes = () => {
         <Route path="/register" element={<Register />} />
         
         <Route element={<ProtectedRoute />}>
-          <Route path="/" element={<Layout><Dashboard /></Layout>} />
-          <Route path="/transactions" element={<Layout><Transactions /></Layout>} />
-          <Route path="/cards" element={<Layout><CardsPage /></Layout>} />
-          <Route path="/profile" element={<Layout><Profile /></Layout>} />
+          <Route path="/" element={<Layout title="Overview" subtitle="Welcome back. Here is your financial summary."><Dashboard /></Layout>} />
+          <Route path="/transactions" element={<Layout title="Transactions" subtitle="A complete ledger of all your incoming and outgoing transfers."><Transactions /></Layout>} />
+          <Route path="/cards" element={<Layout title="Virtual Cards" subtitle="Manage your Astra-Pay debit cards."><CardsPage /></Layout>} />
+          <Route path="/profile" element={<Layout title="Account Profile" subtitle="Manage your personal information and security preferences."><Profile /></Layout>} />
         </Route>
 
         <Route path="*" element={<Navigate to="/" replace />} />
@@ -46,14 +46,14 @@ function App() {
             style: {
               background: '#0a0a0a',
               color: '#fff',
-              border: '1px solid rgba(255, 77, 141, 0.2)',
+              border: '1px solid rgba(255, 255, 255, 0.1)',
               backdropFilter: 'blur(10px)',
             },
             success: {
-              iconTheme: { primary: '#FF4D8D', secondary: '#fff' },
+              iconTheme: { primary: '#fff', secondary: '#000' },
             },
             error: {
-              iconTheme: { primary: '#ef4444', secondary: '#fff' },
+              iconTheme: { primary: '#fff', secondary: '#000' },
             }
           }} 
         />

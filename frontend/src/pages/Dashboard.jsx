@@ -15,10 +15,6 @@ const Dashboard = () => {
       }}
       className="max-w-6xl mx-auto"
     >
-      <header className="mb-8">
-        <h2 className="text-3xl font-black uppercase tracking-tighter text-white">Overview</h2>
-        <p className="text-gray-400 mt-1">Welcome back. Here is your financial summary.</p>
-      </header>
       
       {/* Responsive Bento Grid Layout */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">

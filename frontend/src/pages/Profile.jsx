@@ -19,12 +19,6 @@ const ProfilePage = () => {
 
   return (
     <div className="space-y-8 h-full flex flex-col max-w-5xl mx-auto w-full relative z-10">
-      <header className="pb-4">
-        <h2 className="text-3xl font-black uppercase text-white tracking-wider flex items-center gap-3">
-          <User className="text-primary" size={28} /> Account Profile
-        </h2>
-        <p className="font-medium text-gray-400 mt-2">Manage your personal information and security preferences.</p>
-      </header>
       
       <div className="flex-1 grid grid-cols-1 lg:grid-cols-3 gap-8">
         
@@ -35,7 +29,7 @@ const ProfilePage = () => {
              animate={{ opacity: 1, y: 0 }}
              className="glass p-8 rounded-3xl border border-white/5 shadow-xl text-center relative overflow-hidden group"
            >
-             <div className="absolute top-0 right-0 w-32 h-32 bg-primary/10 rounded-full blur-3xl group-hover:bg-primary/20 transition-colors"></div>
+             <div className="absolute top-0 right-0 w-32 h-32 bg-white/5 rounded-full blur-3xl group-hover:bg-white/10 transition-colors"></div>
              
              <div className="w-28 h-28 bg-gradient-to-br from-gray-800 to-black rounded-full flex items-center justify-center text-5xl font-black mx-auto mb-6 text-white border-4 border-white/10 shadow-2xl relative z-10">
                {user?.username?.charAt(0).toUpperCase() || '?'}
@@ -44,7 +38,7 @@ const ProfilePage = () => {
              <h3 className="text-2xl font-black uppercase text-white tracking-tight relative z-10">{user?.username || 'Guest'}</h3>
              
              <div className="mt-6 flex items-center justify-center gap-2 text-gray-400 font-medium bg-black/30 w-max mx-auto px-4 py-2 rounded-full border border-white/5 relative z-10">
-               <Mail size={16} className="text-primary" />
+               <Mail size={16} className="text-white" />
                <span className="text-sm">{user?.email || 'user@astrapay.dev'}</span>
              </div>
 
@@ -82,7 +76,7 @@ const ProfilePage = () => {
              className="glass p-8 rounded-3xl border border-white/5 shadow-xl"
            >
               <h3 className="text-xl font-black text-white mb-6 flex items-center gap-2 uppercase tracking-wide">
-                <Shield className="text-primary" size={24} /> Security Settings
+                <Shield className="text-white" size={24} /> Security Settings
               </h3>
               
               <div className="space-y-4">
@@ -111,7 +105,7 @@ const ProfilePage = () => {
              className="glass p-8 rounded-3xl border border-white/5 shadow-xl"
            >
               <h3 className="text-xl font-black text-white mb-6 flex items-center gap-2 uppercase tracking-wide">
-                <Bell className="text-primary" size={24} /> Preferences
+                <Bell className="text-white" size={24} /> Preferences
               </h3>
               
               <div className="space-y-4">
@@ -143,12 +137,12 @@ const ProfilePage = () => {
 const Toggle = ({ active, onClick, disabled = false }) => (
   <button 
     onClick={!disabled ? onClick : undefined}
-    className={`w-14 h-8 rounded-full p-1 transition-colors relative focus:outline-none shrink-0 ${active && !disabled ? 'bg-primary' : (active && disabled ? 'bg-primary/50' : 'bg-gray-700')} ${disabled ? 'cursor-not-allowed' : 'cursor-pointer'}`}
+    className={`w-14 h-8 rounded-full p-1 transition-colors relative focus:outline-none shrink-0 ${active && !disabled ? 'bg-white' : (active && disabled ? 'bg-white/50' : 'bg-gray-700')} ${disabled ? 'cursor-not-allowed' : 'cursor-pointer'}`}
   >
     <motion.div 
       animate={{ x: active ? 24 : 0 }}
       transition={{ type: "spring", stiffness: 500, damping: 30 }}
-      className={`w-6 h-6 rounded-full shadow-md ${disabled && active ? 'bg-white/80' : 'bg-white'}`}
+      className={`w-6 h-6 rounded-full shadow-md ${active && !disabled ? 'bg-black' : 'bg-white'}`}
     />
   </button>
 );

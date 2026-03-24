@@ -19,12 +19,6 @@ const CardsPage = () => {
 
   return (
     <div className="space-y-8 h-full flex flex-col relative z-10 w-full max-w-4xl mx-auto">
-      <header className="pb-4">
-        <h2 className="text-3xl font-black uppercase text-white tracking-wider flex items-center gap-3">
-          <CreditCard className="text-primary" size={28} /> Virtual Cards
-        </h2>
-        <p className="font-medium text-gray-400 mt-2">Manage your Astra-Pay debit cards.</p>
-      </header>
       
       <div className="flex-1 grid grid-cols-1 lg:grid-cols-2 gap-8">
         
@@ -34,10 +28,10 @@ const CardsPage = () => {
             initial={{ scale: 0.9, opacity: 0, rotateY: 15 }}
             animate={{ scale: 1, opacity: 1, rotateY: 0 }}
             transition={{ type: "spring", bounce: 0.4 }}
-            className={`w-full max-w-md aspect-[1.586/1] rounded-2xl p-6 flex flex-col justify-between relative overflow-hidden transition-all duration-500 shadow-2xl border ${isFrozen ? 'border-blue-500/30 shadow-[0_0_30px_rgba(59,130,246,0.2)]' : 'border-primary/40 shadow-[0_0_40px_rgba(255,77,141,0.3)]'} backdrop-blur-2xl group`}
+            className={`w-full max-w-md aspect-[1.586/1] rounded-2xl p-6 flex flex-col justify-between relative overflow-hidden transition-all duration-500 shadow-2xl border ${isFrozen ? 'border-blue-500/30 shadow-[0_0_30px_rgba(59,130,246,0.2)]' : 'border-white/20 shadow-[0_0_40px_rgba(255,255,255,0.1)]'} backdrop-blur-2xl group`}
           >
             {/* Card Background gradient */}
-            <div className={`absolute inset-0 ${isFrozen ? 'bg-gradient-to-br from-blue-900/60 to-black/80' : 'bg-gradient-to-br from-primary/30 to-black/80'} z-0`}></div>
+            <div className={`absolute inset-0 ${isFrozen ? 'bg-gradient-to-br from-blue-900/60 to-black/80' : 'bg-gradient-to-br from-white/10 to-black/80'} z-0`}></div>
             
             {/* Glossy overlay layer */}
             <div className="absolute inset-0 bg-gradient-to-tr from-white/5 to-transparent z-0 opacity-50 pointer-events-none"></div>
@@ -54,7 +48,7 @@ const CardsPage = () => {
             {/* Header */}
             <div className="relative z-20 flex justify-between items-start">
               <span className="font-black italic text-2xl tracking-tighter text-white drop-shadow-md">
-                ASTRA<span className="text-primary group-hover:text-white transition-colors">PAY</span>
+                ASTRA<span className="text-white group-hover:text-gray-300 transition-colors">PAY</span>
               </span>
               <div className="flex items-center gap-2">
                 <span className="w-10 h-6 bg-white/20 rounded-md backdrop-blur-sm border border-white/10 flex items-center justify-center relative overflow-hidden">
@@ -112,7 +106,7 @@ const CardsPage = () => {
         >
           <div className="glass p-6 rounded-2xl flex items-center justify-between border border-white/5 shadow-lg">
             <div className="flex items-center gap-4">
-              <div className={`p-3 rounded-full ${showNumber ? 'bg-primary/20 text-primary' : 'bg-gray-800 text-gray-400'}`}>
+              <div className={`p-3 rounded-full ${showNumber ? 'bg-white/10 text-white' : 'bg-gray-800 text-gray-400'}`}>
                 {showNumber ? <Eye size={20} /> : <EyeOff size={20} />}
               </div>
               <div>
@@ -123,7 +117,7 @@ const CardsPage = () => {
             <button 
               onClick={() => setShowNumber(!showNumber)}
               disabled={isFrozen}
-              className={`px-4 py-2 rounded-lg font-bold text-sm transition-all focus:outline-none disabled:opacity-50 disabled:cursor-not-allowed ${showNumber ? 'bg-white/10 text-white hover:bg-white/20' : 'bg-primary text-white hover:bg-primary/90 shadow-[0_0_15px_rgba(255,77,141,0.4)]'}`}
+              className={`px-4 py-2 rounded-lg font-bold text-sm transition-all focus:outline-none disabled:opacity-50 disabled:cursor-not-allowed ${showNumber ? 'bg-white/10 text-white hover:bg-white/20' : 'bg-white text-black hover:bg-gray-200 shadow-[0_0_15px_rgba(255,255,255,0.2)]'}`}
             >
               {showNumber ? 'Hide' : 'Reveal'}
             </button>
