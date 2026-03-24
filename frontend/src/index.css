@@ -1,9 +1,10 @@
 @import "tailwindcss";
 
 @theme {
-  --color-background: #050505;
-  --color-primary: #FF4D8D;
-  --color-secondary: #8B5CF6;
+  --color-background: #000000;
+  --color-surface: #0A0A0A;
+  --color-primary: #FFFFFF;
+  --color-secondary: #A3A3A3;
 }
 
 @utility glass {

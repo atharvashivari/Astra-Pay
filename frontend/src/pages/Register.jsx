@@ -30,58 +30,59 @@ const Register = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 flex flex-col justify-center py-12 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-black flex flex-col justify-center py-12 sm:px-6 lg:px-8">
       <div className="sm:mx-auto sm:w-full sm:max-w-md">
-        <h2 className="mt-6 text-center text-4xl font-black text-gray-900 uppercase tracking-tighter">
+        <h2 className="mt-6 text-center text-4xl font-black text-white uppercase tracking-tighter">
           Create Account
         </h2>
-        <p className="mt-2 text-center text-sm text-gray-600">
+        <p className="mt-2 text-center text-sm text-gray-400">
           Already have a wallet?{' '}
-          <Link to="/login" className="font-bold text-black border-b-2 border-black hover:text-gray-700">
+          <Link to="/login" className="font-bold text-white border-b-2 border-white hover:text-gray-300">
             Sign in
           </Link>
         </p>
       </div>
 
       <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
-        <div className="bg-white py-8 px-4 border-4 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] sm:px-10">
+        <div className="bg-surface py-8 px-4 border border-white/10 shadow-2xl sm:px-10 rounded-2xl relative overflow-hidden">
+          <div className="absolute top-0 right-0 w-32 h-32 bg-white/5 rounded-full blur-2xl -mr-16 -mt-16 pointer-events-none" />
           <form className="space-y-6" onSubmit={handleSubmit}>
             
             <div>
-              <label className="block text-sm font-black text-gray-900 uppercase">Username</label>
+              <label className="block text-sm font-bold text-gray-400 uppercase tracking-widest">Username</label>
               <div className="mt-1">
                 <input
                   type="text"
                   required
                   value={username}
                   onChange={(e) => setUsername(e.target.value)}
-                  className="appearance-none block w-full px-3 py-2 border-2 border-black placeholder-gray-400 focus:outline-none focus:ring-0 sm:text-sm font-bold bg-gray-50 text-black"
+                  className="appearance-none block w-full px-4 py-3 border border-white/10 placeholder-gray-600 focus:outline-none focus:border-white sm:text-sm font-medium bg-black text-white rounded-xl transition-colors"
                 />
               </div>
             </div>
 
             <div>
-              <label className="block text-sm font-black text-gray-900 uppercase">Email Address</label>
+              <label className="block text-sm font-bold text-gray-400 uppercase tracking-widest">Email Address</label>
               <div className="mt-1">
                 <input
                   type="email"
                   required
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="appearance-none block w-full px-3 py-2 border-2 border-black placeholder-gray-400 focus:outline-none focus:ring-0 sm:text-sm font-bold bg-gray-50 text-black"
+                  className="appearance-none block w-full px-4 py-3 border border-white/10 placeholder-gray-600 focus:outline-none focus:border-white sm:text-sm font-medium bg-black text-white rounded-xl transition-colors"
                 />
               </div>
             </div>
 
             <div>
-              <label className="block text-sm font-black text-gray-900 uppercase">Password</label>
+              <label className="block text-sm font-bold text-gray-400 uppercase tracking-widest">Password</label>
               <div className="mt-1">
                 <input
                   type="password"
                   required
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  className="appearance-none block w-full px-3 py-2 border-2 border-black placeholder-gray-400 focus:outline-none focus:ring-0 sm:text-sm font-bold bg-gray-50 text-black"
+                  className="appearance-none block w-full px-4 py-3 border border-white/10 placeholder-gray-600 focus:outline-none focus:border-white sm:text-sm font-medium bg-black text-white rounded-xl transition-colors"
                 />
               </div>
             </div>
@@ -90,7 +91,7 @@ const Register = () => {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full flex justify-center py-3 px-4 border-2 border-black text-sm font-black uppercase text-white bg-black hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-black disabled:opacity-50 transition-colors"
+                className="w-full flex justify-center py-4 px-4 border border-transparent text-sm font-black uppercase text-black bg-white hover:bg-gray-200 shadow-[0_0_20px_rgba(255,255,255,0.1)] rounded-xl disabled:opacity-50 transition-all hover:scale-[1.02]"
               >
                 {isSubmitting ? 'Registering...' : 'Create Wallet'}
               </button>

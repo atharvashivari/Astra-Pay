@@ -33,9 +33,9 @@ const BalanceDisplay = () => {
     <motion.div 
       initial={{ opacity: 0, scale: 0.95 }}
       animate={{ opacity: 1, scale: 1 }}
-      className="flex-1 p-8 rounded-3xl glass drop-shadow-[0_0_15px_rgba(255,77,141,0.3)] border border-primary/20 flex flex-col justify-center items-start relative overflow-hidden"
+      className="flex-1 p-8 rounded-3xl glass border border-white/10 flex flex-col justify-center items-start relative overflow-hidden"
     >
-      <div className="absolute top-0 right-0 w-48 h-48 bg-primary/20 rounded-full blur-3xl -mr-16 -mt-16 pointer-events-none" />
+      <div className="absolute top-0 right-0 w-48 h-48 bg-white/5 rounded-full blur-3xl -mr-16 -mt-16 pointer-events-none" />
       <h2 className="text-gray-400 font-bold tracking-widest text-sm uppercase mb-3 z-10">Total Balance</h2>
       
       <div className="text-5xl lg:text-7xl font-black tracking-tighter text-white z-10">
@@ -51,9 +51,9 @@ const BalanceDisplay = () => {
       <div className="absolute bottom-8 right-8 z-20">
         <button 
           onClick={() => setIsAddFundsOpen(true)}
-          className="bg-white/10 hover:bg-white/20 border border-white/20 backdrop-blur-md text-white px-5 py-3 rounded-full font-bold flex items-center gap-2 shadow-[0_0_15px_rgba(255,255,255,0.1)] transition-all hover:scale-105"
+          className="bg-white hover:bg-white/90 text-black px-5 py-3 rounded-full font-bold flex items-center gap-2 shadow-[0_0_15px_rgba(255,255,255,0.2)] transition-all hover:scale-105"
         >
-          <Plus size={18} className="text-primary"/> Add Funds
+          <Plus size={18} /> Add Funds
         </button>
       </div>
 

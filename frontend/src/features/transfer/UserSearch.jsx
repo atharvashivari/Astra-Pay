@@ -17,7 +17,7 @@ const UserSearch = ({ onSelectUser }) => {
         <input
           type="text"
           placeholder="Search by Wallet Address..."
-          className="w-full bg-slate-800/50 border border-slate-700 rounded-xl px-4 py-3 pl-10 text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-cyan-500 transition-all"
+          className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 pl-10 text-white placeholder-gray-600 focus:outline-none focus:border-white transition-all"
           value={query}
           onChange={(e) => setQuery(e.target.value)}
         />
