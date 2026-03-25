@@ -48,13 +48,14 @@ const TransferForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!fromWallet || isSubmittingLocal) {
+    const finalRecipient = toWallet || searchTerm;
+    if (!finalRecipient || isSubmittingLocal) {
       if (!fromWallet) toast.error('Could not determine your wallet address. Please refresh and try again.');
       return;
     }
     
     setIsSubmittingLocal(true);
-    transferMutation.mutate({ fromWallet, toWallet, amount: parseFloat(amount) }, {
+    transferMutation.mutate({ fromWallet, toWallet: finalRecipient, amount: parseFloat(amount) }, {
       onSettled: () => setIsSubmittingLocal(false),
       onSuccess: () => {
         setToWallet('');
@@ -76,17 +77,26 @@ const TransferForm = () => {
       
       <form onSubmit={handleSubmit} className="space-y-6 flex-1 flex flex-col h-full">
         {/* Focus Mode Form */}
-        <div className="relative z-20">
-          <label className="text-xs uppercase tracking-widest text-gray-500 font-bold mb-2 block">Search Recipient</label>
+        <div className="relative">
+          <label className="text-xs uppercase tracking-widest text-gray-500 font-bold mb-2 block">Recipient</label>
           <div className="relative">
             <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-500" size={16} />
             <input
               type="text"
               value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full bg-black/40 border border-white/10 rounded-xl p-3 pl-10 text-white placeholder:text-gray-600 focus:outline-none focus:border-primary/50 transition-colors"
-              placeholder="@username"
+              onChange={(e) => {
+                setSearchTerm(e.target.value);
+                if (toWallet) setToWallet(''); // Reset selection if typing
+              }}
+              className="w-full bg-black/40 border border-white/10 rounded-xl p-3 pl-10 text-white placeholder:text-gray-600 focus:outline-none focus:border-primary/50 transition-colors font-mono"
+              placeholder="@username or wallet address..."
+              required={!toWallet}
             />
+            {toWallet && (
+              <div className="absolute right-3 top-1/2 -translate-y-1/2 bg-primary/20 text-primary text-[10px] font-bold px-2 py-1 rounded-md border border-primary/30">
+                SELECTED
+              </div>
+            )}
           </div>
           
           <AnimatePresence>
@@ -104,7 +114,8 @@ const TransferForm = () => {
                     className="p-3 hover:bg-white/10 cursor-pointer text-sm flex items-center gap-3 border-b border-white/5 last:border-0 transition-colors"
                     onClick={() => {
                       setToWallet(u.walletAddress);
-                      setSearchTerm('');
+                      setSearchTerm(u.username);
+                      setSearchResults([]);
                       setShowDropdown(false);
                     }}
                   >
@@ -113,25 +124,13 @@ const TransferForm = () => {
                     </div>
                     <div>
                       <span className="font-bold text-white block">{u.username}</span> 
-                      <span className="text-gray-500 font-mono text-[10px] sm:text-xs text-ellipsis">{u.walletAddress}</span>
+                      <span className="text-gray-500 font-mono text-[10px] sm:text-xs text-ellipsis truncate block max-w-[200px]">{u.walletAddress}</span>
                     </div>
                   </li>
                 ))}
               </motion.ul>
             )}
           </AnimatePresence>
-        </div>
-
-        <div>
-          <label className="text-xs uppercase tracking-widest text-gray-500 font-bold mb-2 block">To Wallet Address</label>
-          <input
-            type="text"
-            value={toWallet}
-            onChange={(e) => setToWallet(e.target.value)}
-            className="w-full bg-black/40 border border-white/10 rounded-xl p-3 text-white focus:outline-none focus:border-primary/50 font-mono text-sm placeholder:text-gray-600 transition-colors"
-            placeholder="Recipient's wallet UUID..."
-            required
-          />
         </div>
 
         <div>

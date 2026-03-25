@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
 @RestController
 @RequestMapping("/api/v1/users")
@@ -35,5 +36,16 @@ public class UserController {
             }
         }
         return ResponseEntity.ok(result);
+    }
+
+    @PutMapping("/profile")
+    public ResponseEntity<User> updateProfile(java.security.Principal principal, @RequestBody Map<String, String> updates) {
+        User user = userRepository.findByUsername(principal.getName())
+                .orElseThrow(() -> new UsernameNotFoundException("User not found"));
+        
+        if (updates.containsKey("phoneNumber")) user.setPhoneNumber(updates.get("phoneNumber"));
+        if (updates.containsKey("profileImage")) user.setProfileImage(updates.get("profileImage"));
+        
+        return ResponseEntity.ok(userRepository.save(user));
     }
 }
