@@ -32,7 +32,10 @@ public class AuthController {
     }
 
     @GetMapping("/me")
-    public ResponseEntity<Map<String, Object>> getMe(Principal principal) {
+    public ResponseEntity<?> getMe(Principal principal) {
+        if (principal == null || "anonymousUser".equals(principal.getName())) {
+            return ResponseEntity.status(401).body(Map.of("error", "Unauthorized"));
+        }
         return ResponseEntity.ok(authService.getMe(principal.getName()));
     }
 }
