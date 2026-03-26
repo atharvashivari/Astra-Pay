@@ -1,21 +1,20 @@
 package com.astrapay.controller;
 
-import com.astrapay.model.Card;
+import com.astrapay.model.Account;
+import com.astrapay.model.AccountCard;
 import com.astrapay.model.User;
+import com.astrapay.repository.AccountRepository;
 import com.astrapay.repository.CardRepository;
 import com.astrapay.repository.UserRepository;
-import com.astrapay.util.EncryptionUtils;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 
-import java.security.Principal;
 import java.time.LocalDate;
-import java.util.List;
-import java.util.Map;
 import java.util.Random;
-import java.util.stream.Collectors;
+import java.util.UUID;
 
 @RestController
 @RequestMapping("/api/v1/cards")
@@ -23,67 +22,48 @@ import java.util.stream.Collectors;
 public class CardController {
 
     private final CardRepository cardRepository;
+    private final AccountRepository accountRepository;
     private final UserRepository userRepository;
-    private final EncryptionUtils encryptionUtils;
-    private final Random random = new Random();
 
     @PostMapping("/issue")
-    public ResponseEntity<?> issueCard(Principal principal, @RequestParam(defaultValue = "VISA") String type) {
-        User user = userRepository.findByUsername(principal.getName())
-                .orElseThrow(() -> new UsernameNotFoundException("User not found"));
+    public ResponseEntity<?> issueCard(@AuthenticationPrincipal UserDetails userDetails) {
+        User user = userRepository.findByUsername(userDetails.getUsername())
+                .orElseThrow(() -> new RuntimeException("User not found"));
+        
+        Account account = accountRepository.findByUserId(user.getId())
+                .orElseThrow(() -> new RuntimeException("Account not found"));
 
-        String rawCardNumber = generateRandomCardNumber();
-        String rawCvv = String.format("%03d", random.nextInt(1000));
-        LocalDate expiryDate = LocalDate.now().plusYears(5);
+        if (cardRepository.findByAccountId(account.getId()).isPresent()) {
+            return ResponseEntity.badRequest().body("Card already exists for this account");
+        }
 
-        Card card = Card.builder()
-                .user(user)
-                .cardNumber(encryptionUtils.encrypt(rawCardNumber))
-                .cvv(rawCvv)
-                .expiryDate(expiryDate)
-                .type(type)
-                .status(Card.Status.ACTIVE)
-                .build();
+        AccountCard card = new AccountCard();
+        card.setUserId(user.getId());
+        card.setAccountId(account.getId());
+        card.setCardNumber(generateRandomCardNumber());
+        card.setCvv(String.format("%03d", new Random().nextInt(1000)));
+        card.setExpiryDate(LocalDate.now().plusYears(5));
+        card.setStatus(AccountCard.CardStatus.ACTIVE);
 
-        cardRepository.save(card);
-
-        return ResponseEntity.ok(Map.of(
-                "id", card.getId(),
-                "cardNumber", rawCardNumber, // Return raw once on issue
-                "cvv", rawCvv,
-                "expiryDate", expiryDate.toString(),
-                "type", card.getType(),
-                "status", card.getStatus()
-        ));
+        return ResponseEntity.ok(cardRepository.save(card));
     }
 
-    @GetMapping
-    public ResponseEntity<List<Map<String, Object>>> getMyCards(Principal principal) {
-        User user = userRepository.findByUsername(principal.getName())
-                .orElseThrow(() -> new UsernameNotFoundException("User not found"));
-
-        List<Card> cards = cardRepository.findByUser(user);
+    @GetMapping("/my-card")
+    public ResponseEntity<?> getMyCard(@AuthenticationPrincipal UserDetails userDetails) {
+        User user = userRepository.findByUsername(userDetails.getUsername())
+                .orElseThrow(() -> new RuntimeException("User not found"));
         
-        List<Map<String, Object>> response = cards.stream().map(card -> Map.<String, Object>of(
-                "id", card.getId(),
-                "cardNumber", maskCardNumber(encryptionUtils.decrypt(card.getCardNumber())),
-                "type", card.getType(),
-                "status", card.getStatus(),
-                "expiryDate", card.getExpiryDate().toString()
-        )).collect(Collectors.toList());
-
-        return ResponseEntity.ok(response);
+        return cardRepository.findByUserId(user.getId())
+                .map(ResponseEntity::ok)
+                .orElse(ResponseEntity.noContent().build());
     }
 
     private String generateRandomCardNumber() {
-        StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < 16; i++) {
+        Random random = new Random();
+        StringBuilder sb = new StringBuilder("4829"); // Astra-Pay bin
+        for (int i = 0; i < 12; i++) {
             sb.append(random.nextInt(10));
         }
         return sb.toString();
-    }
-
-    private String maskCardNumber(String number) {
-        return "**** **** **** " + number.substring(12);
     }
 }

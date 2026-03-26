@@ -51,35 +51,35 @@ const ProfilePage = () => {
              <div className="absolute top-0 right-0 w-32 h-32 bg-white/5 rounded-full blur-3xl group-hover:bg-white/10 transition-colors"></div>
              
              <div className="relative mx-auto mb-6 w-max">
-               <div className="w-28 h-28 bg-gradient-to-br from-gray-800 to-black rounded-full flex items-center justify-center text-5xl font-black mx-auto text-white border-4 border-white/10 shadow-2xl relative z-10 overflow-hidden">
-                 {user?.profileImage ? (
-                   <img src={user.profileImage} alt="Profile" className="w-full h-full object-cover" />
-                 ) : (
-                   user?.username?.charAt(0).toUpperCase() || '?'
-                 )}
-               </div>
-               <button 
-                onClick={() => setIsEditing(true)}
-                className="absolute bottom-0 right-0 bg-white text-black p-2 rounded-full shadow-lg z-20 hover:scale-110 transition-transform border border-black/10"
-               >
-                 <Camera size={16} />
-               </button>
-             </div>
+                <div className="w-28 h-28 bg-gradient-to-br from-gray-800 to-black rounded-full flex items-center justify-center text-5xl font-black mx-auto text-white border-4 border-white/10 shadow-2xl relative z-10 overflow-hidden">
+                  {user?.profileImage ? (
+                    <img src={user.profileImage} alt="Profile" className="w-full h-full object-cover" />
+                  ) : (
+                    user?.username?.charAt(0).toUpperCase() || '?'
+                  )}
+                </div>
+                {!user?.googleSub && (
+                  <button 
+                   onClick={() => setIsEditing(true)}
+                   className="absolute bottom-0 right-0 bg-white text-black p-2 rounded-full shadow-lg z-20 hover:scale-110 transition-transform border border-black/10"
+                  >
+                    <Camera size={16} />
+                  </button>
+                )}
+              </div>
              
              <h3 className="text-2xl font-black uppercase text-white tracking-tight relative z-10">{user?.username || 'Guest'}</h3>
              
              <div className="mt-4 space-y-2 relative z-10">
-                <div className="flex items-center justify-center gap-2 text-gray-400 font-medium bg-black/30 w-full px-4 py-2 rounded-full border border-white/5">
-                  <Mail size={14} className="text-white/70" />
-                  <span className="text-sm truncate">{user?.email || 'user@astrapay.dev'}</span>
-                </div>
-                {user?.phoneNumber && (
-                  <div className="flex items-center justify-center gap-2 text-gray-400 font-medium bg-black/30 w-full px-4 py-2 rounded-full border border-white/5">
-                    <Smartphone size={14} className="text-white/70" />
-                    <span className="text-sm">{user.phoneNumber}</span>
-                  </div>
-                )}
-             </div>
+                 <div className="flex items-center justify-center gap-2 text-gray-400 font-medium bg-black/30 w-full px-4 py-2 rounded-full border border-white/5">
+                   {user?.googleSub ? <img src="https://www.google.com/favicon.ico" className="w-3 h-3 grayscale" alt="Google" /> : <Mail size={14} className="text-white/70" />}
+                   <span className="text-sm truncate">{user?.email || 'user@astrapay.dev'}</span>
+                 </div>
+                 <div className="flex items-center justify-center gap-2 text-gray-400 font-medium bg-black/30 w-full px-4 py-2 rounded-full border border-white/5">
+                   <Smartphone size={14} className="text-white/70" />
+                   <span className="text-sm">{user?.phoneNumber || 'No phone set'}</span>
+                 </div>
+              </div>
 
              <div className="mt-8 pt-6 border-t border-white/5 text-left relative z-10 space-y-4">
                <div>

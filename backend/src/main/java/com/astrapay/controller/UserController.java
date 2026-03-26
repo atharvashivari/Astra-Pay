@@ -1,18 +1,15 @@
 package com.astrapay.controller;
 
-import com.astrapay.model.Account;
 import com.astrapay.model.User;
-import com.astrapay.repository.AccountRepository;
 import com.astrapay.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api/v1/users")
@@ -20,32 +17,41 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 public class UserController {
 
     private final UserRepository userRepository;
-    private final AccountRepository accountRepository;
 
     @GetMapping("/search")
-    public ResponseEntity<List<Map<String, String>>> searchUsers(@RequestParam String username) {
-        List<User> users = userRepository.findByUsernameContainingIgnoreCase(username);
-        List<Map<String, String>> result = new ArrayList<>();
-        for (User user : users) {
-            List<Account> accounts = accountRepository.findByUserId(user.getId().toString());
-            if (!accounts.isEmpty()) {
-                Map<String, String> map = new HashMap<>();
-                map.put("username", user.getUsername());
-                map.put("walletAddress", accounts.get(0).getWalletAddress());
-                result.add(map);
-            }
-        }
-        return ResponseEntity.ok(result);
+    public ResponseEntity<List<User>> searchUsers(@RequestParam String query) {
+        if (query.length() < 2) return ResponseEntity.ok(List.of());
+        
+        List<User> users = userRepository.findByUsernameContainingIgnoreCaseOrPhoneNumberContaining(query, query);
+        // Exclude sensitive data
+        users.forEach(u -> u.setPassword(null));
+        return ResponseEntity.ok(users);
+    }
+
+    @GetMapping("/me")
+    public ResponseEntity<User> getCurrentUser(@AuthenticationPrincipal UserDetails userDetails) {
+        return userRepository.findByUsername(userDetails.getUsername())
+                .map(u -> {
+                    u.setPassword(null);
+                    return ResponseEntity.ok(u);
+                })
+                .orElse(ResponseEntity.notFound().build());
     }
 
     @PutMapping("/profile")
-    public ResponseEntity<User> updateProfile(java.security.Principal principal, @RequestBody Map<String, String> updates) {
-        User user = userRepository.findByUsername(principal.getName())
-                .orElseThrow(() -> new UsernameNotFoundException("User not found"));
-        
-        if (updates.containsKey("phoneNumber")) user.setPhoneNumber(updates.get("phoneNumber"));
-        if (updates.containsKey("profileImage")) user.setProfileImage(updates.get("profileImage"));
-        
-        return ResponseEntity.ok(userRepository.save(user));
+    public ResponseEntity<User> updateProfile(@AuthenticationPrincipal UserDetails userDetails, @RequestBody User profileUpdate) {
+        return userRepository.findByUsername(userDetails.getUsername())
+                .map(user -> {
+                    if (profileUpdate.getPhoneNumber() != null) {
+                        user.setPhoneNumber(profileUpdate.getPhoneNumber());
+                    }
+                    if (profileUpdate.getProfileImage() != null) {
+                        user.setProfileImage(profileUpdate.getProfileImage());
+                    }
+                    userRepository.save(user);
+                    user.setPassword(null);
+                    return ResponseEntity.ok(user);
+                })
+                .orElse(ResponseEntity.notFound().build());
     }
 }

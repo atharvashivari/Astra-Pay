@@ -1,20 +1,19 @@
 package com.astrapay.model;
 
 import jakarta.persistence.*;
-import org.hibernate.annotations.Check;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import java.math.BigDecimal;
+
+import java.time.LocalDate;
 import java.util.UUID;
 
 @Entity
-@Table(name = "accounts")
-@Check(constraints = "balance >= 0")
+@Table(name = "account_cards")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Account {
+public class AccountCard {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -23,23 +22,23 @@ public class Account {
     @Column(nullable = false)
     private UUID userId;
 
+    @Column(nullable = false)
+    private UUID accountId;
+
     @Column(nullable = false, unique = true)
-    private String walletAddress;
+    private String cardNumber; // Masked or full encrypted
 
     @Column(nullable = false)
-    private BigDecimal balance = BigDecimal.ZERO;
+    private String cvv; // Encrypted
 
     @Column(nullable = false)
-    private String currency = "INR";
+    private LocalDate expiryDate;
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
-    private Status status = Status.ACTIVE;
+    private CardStatus status = CardStatus.ACTIVE;
 
-    @Version
-    private Long version;
-
-    public enum Status {
+    public enum CardStatus {
         ACTIVE, FROZEN
     }
 }

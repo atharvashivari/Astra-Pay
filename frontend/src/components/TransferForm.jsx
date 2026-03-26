@@ -27,8 +27,8 @@ const TransferForm = () => {
   }, []);
 
   useEffect(() => {
-    if (searchTerm.trim().length >= 1) {
-      apiClient.get(`/users/search?username=${searchTerm}`)
+    if (searchTerm.trim().length >= 2) {
+      apiClient.get(`/users/search?query=${searchTerm}`)
         .then(res => {
           setSearchResults(res.data);
           setShowDropdown(true);

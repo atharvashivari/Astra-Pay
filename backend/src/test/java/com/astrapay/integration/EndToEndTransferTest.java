@@ -82,7 +82,7 @@ public class EndToEndTransferTest {
 
         // Get receiver's wallet address
         User receiver = userRepository.findByUsername("receiver").orElseThrow();
-        Account receiverAccount = accountRepository.findByUserId(receiver.getId().toString()).get(0);
+        Account receiverAccount = accountRepository.findByUserId(receiver.getId()).orElseThrow();
         String receiverWallet = receiverAccount.getWalletAddress();
 
         // Step 2: Login as sender and extract the JWT token
@@ -104,7 +104,7 @@ public class EndToEndTransferTest {
 
         // Step 3: (Manual DB Setup) Give sender a balance of ₹1000
         User sender = userRepository.findByUsername("sender").orElseThrow();
-        Account senderAccount = accountRepository.findByUserId(sender.getId().toString()).get(0);
+        Account senderAccount = accountRepository.findByUserId(sender.getId()).orElseThrow();
         senderAccount.setBalance(new BigDecimal("1000.00"));
         accountRepository.save(senderAccount);
         String senderWallet = senderAccount.getWalletAddress();

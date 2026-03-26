@@ -15,6 +15,7 @@ import static org.mockito.Mockito.when;
 
 import java.math.BigDecimal;
 import java.util.Optional;
+import java.util.UUID;
 import java.util.concurrent.CompletableFuture;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -84,7 +85,8 @@ class WalletServiceTest {
         String toWallet = "wallet-b";
         BigDecimal amount = new BigDecimal("100.00");
         String idempotencyKey = "key-123";
-        String userId = "123e4567-e89b-12d3-a456-426614174000";
+        String userIdStr = "123e4567-e89b-12d3-a456-426614174000";
+        UUID userId = UUID.fromString(userIdStr);
 
         Account sender = new Account();
         sender.setWalletAddress(fromWallet);
@@ -96,19 +98,20 @@ class WalletServiceTest {
         recipient.setWalletAddress(toWallet);
         recipient.setBalance(new BigDecimal("200.00"));
         recipient.setStatus(Account.Status.ACTIVE);
+        recipient.setUserId(UUID.randomUUID());
 
         // Security context mock
         SecurityContext securityContext = mock(SecurityContext.class);
         Authentication authentication = mock(Authentication.class);
         when(securityContext.getAuthentication()).thenReturn(authentication);
-        when(authentication.getName()).thenReturn(userId);
+        when(authentication.getName()).thenReturn(userIdStr);
         SecurityContextHolder.setContext(securityContext);
 
         User mockUser = new User();
-        mockUser.setId(java.util.UUID.fromString(userId));
-        mockUser.setUsername(userId);
+        mockUser.setId(userId);
+        mockUser.setUsername(userIdStr);
         
-        when(userRepository.findByUsername(userId)).thenReturn(Optional.of(mockUser));
+        when(userRepository.findByUsername(userIdStr)).thenReturn(Optional.of(mockUser));
         when(stringRedisTemplate.hasKey(idempotencyKey)).thenReturn(false);
         when(stringRedisTemplate.opsForValue()).thenReturn(valueOperations);
         when(accountRepository.findWithLockByWalletAddress(fromWallet)).thenReturn(Optional.of(sender));
@@ -116,7 +119,7 @@ class WalletServiceTest {
         when(kafkaTemplate.send(anyString(), any(TransactionEvent.class))).thenReturn(CompletableFuture.completedFuture(null));
         when(transactionRepository.save(any(com.astrapay.model.Transaction.class))).thenAnswer(i -> {
             com.astrapay.model.Transaction t = i.getArgument(0);
-            t.setId(java.util.UUID.randomUUID());
+            t.setId(UUID.randomUUID());
             return t;
         });
 
@@ -139,7 +142,8 @@ class WalletServiceTest {
         String toWallet = "wallet-b";
         BigDecimal amount = new BigDecimal("100.00");
         String idempotencyKey = "key-456";
-        String userId = "123e4567-e89b-12d3-a456-426614174000";
+        String userIdStr = "123e4567-e89b-12d3-a456-426614174000";
+        UUID userId = UUID.fromString(userIdStr);
 
         Account sender = new Account();
         sender.setWalletAddress(fromWallet);
@@ -151,19 +155,20 @@ class WalletServiceTest {
         recipient.setWalletAddress(toWallet);
         recipient.setBalance(new BigDecimal("200.00"));
         recipient.setStatus(Account.Status.ACTIVE);
+        recipient.setUserId(UUID.randomUUID());
 
         // Security context mock
         SecurityContext securityContext = mock(SecurityContext.class);
         Authentication authentication = mock(Authentication.class);
         when(securityContext.getAuthentication()).thenReturn(authentication);
-        when(authentication.getName()).thenReturn(userId);
+        when(authentication.getName()).thenReturn(userIdStr);
         SecurityContextHolder.setContext(securityContext);
 
         User mockUser = new User();
-        mockUser.setId(java.util.UUID.fromString(userId));
-        mockUser.setUsername(userId);
+        mockUser.setId(userId);
+        mockUser.setUsername(userIdStr);
         
-        when(userRepository.findByUsername(userId)).thenReturn(Optional.of(mockUser));
+        when(userRepository.findByUsername(userIdStr)).thenReturn(Optional.of(mockUser));
         when(stringRedisTemplate.hasKey(idempotencyKey)).thenReturn(false);
         when(accountRepository.findWithLockByWalletAddress(fromWallet)).thenReturn(Optional.of(sender));
         when(accountRepository.findWithLockByWalletAddress(toWallet)).thenReturn(Optional.of(recipient));
@@ -185,7 +190,8 @@ class WalletServiceTest {
         String toWallet = "wallet-b";
         BigDecimal amount = new BigDecimal("100.00");
         String idempotencyKey = "key-789";
-        String userId = "123e4567-e89b-12d3-a456-426614174000";
+        String userIdStr = "123e4567-e89b-12d3-a456-426614174000";
+        UUID userId = UUID.fromString(userIdStr);
 
         Account sender = new Account();
         sender.setWalletAddress(fromWallet);
@@ -197,25 +203,26 @@ class WalletServiceTest {
         recipient.setWalletAddress(toWallet);
         recipient.setBalance(new BigDecimal("200.00"));
         recipient.setStatus(Account.Status.ACTIVE);
+        recipient.setUserId(UUID.randomUUID());
 
         // Security context mock
         SecurityContext securityContext = mock(SecurityContext.class);
         Authentication authentication = mock(Authentication.class);
         when(securityContext.getAuthentication()).thenReturn(authentication);
-        when(authentication.getName()).thenReturn(userId);
+        when(authentication.getName()).thenReturn(userIdStr);
         SecurityContextHolder.setContext(securityContext);
 
         User mockUser = new User();
-        mockUser.setId(java.util.UUID.fromString(userId));
-        mockUser.setUsername(userId);
+        mockUser.setId(userId);
+        mockUser.setUsername(userIdStr);
         
-        when(userRepository.findByUsername(userId)).thenReturn(Optional.of(mockUser));
+        when(userRepository.findByUsername(userIdStr)).thenReturn(Optional.of(mockUser));
         when(stringRedisTemplate.hasKey(idempotencyKey)).thenReturn(false);
         when(accountRepository.findWithLockByWalletAddress(fromWallet)).thenReturn(Optional.of(sender));
         when(accountRepository.findWithLockByWalletAddress(toWallet)).thenReturn(Optional.of(recipient));
         when(transactionRepository.save(any(com.astrapay.model.Transaction.class))).thenAnswer(i -> {
             com.astrapay.model.Transaction t = i.getArgument(0);
-            t.setId(java.util.UUID.randomUUID());
+            t.setId(UUID.randomUUID());
             return t;
         });
         
@@ -224,18 +231,10 @@ class WalletServiceTest {
         when(accountRepository.save(recipient)).thenThrow(new RuntimeException("Database failure"));
 
         // Act & Assert
-        // In this test, we simulate the exception thrown during the service execution.
-        // Spring's @Transactional handles this by intercepting the exception.
-        // When a RuntimeException (or any Unchecked Exception) escapes the @Transactional method,
-        // the TransactionInterceptor triggers a rollback on the PlatformTransactionManager.
-        // This ensures that even though sender.setBalance() was called and potentially the first 
-        // save was issued to the DB, the entire unit of work is aborted and reversed.
         assertThrows(RuntimeException.class, () -> 
             walletService.transferFunds(fromWallet, toWallet, amount, idempotencyKey)
         );
 
-        // Verification: Even though sender was updated in memory, the DB transaction would roll back.
-        // In a unit test, we verify that the exception was propagated.
         verify(accountRepository, times(2)).save(any(Account.class));
     }
 }

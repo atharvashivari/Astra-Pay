@@ -47,7 +47,7 @@ export const AuthProvider = ({ children }) => {
   const connectWebSocket = (userId) => {
     if (stompClientRef.current) return;
 
-    const socket = new SockJS('/ws');
+    const socket = new SockJS('/ws-connect');
     const client = new Client({
       webSocketFactory: () => socket,
       debug: (str) => console.log('STOMP: ' + str),
@@ -58,14 +58,19 @@ export const AuthProvider = ({ children }) => {
         console.log('STOMP Connected');
         setSocketConnected(true);
         client.subscribe(`/topic/wallet/${userId}`, (message) => {
-          const event = JSON.parse(message.body);
-          console.log('Real-time update received:', event);
-          queryClient.invalidateQueries(['balance']);
-          queryClient.invalidateQueries(['transactions']);
+          console.log('Real-time update received:', message.body);
           
-          if (event.toWallet) {
-             // If we are the recipient, show a toast
-             toast.success(`Received ${event.amount} Astra-Pay!`);
+          if (message.body === 'SYNC') {
+            queryClient.invalidateQueries(['balance']);
+            queryClient.invalidateQueries(['transactions']);
+            toast.success('Funds updated!');
+          } else {
+            const event = JSON.parse(message.body);
+            queryClient.invalidateQueries(['balance']);
+            queryClient.invalidateQueries(['transactions']);
+            if (event.toWallet) {
+               toast.success(`Received ${event.amount} Astra-Pay!`);
+            }
           }
         });
       },

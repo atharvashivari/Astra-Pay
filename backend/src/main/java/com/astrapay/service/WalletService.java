@@ -53,8 +53,7 @@ public class WalletService {
      */
     public Optional<Account> getAccountByUsername(String username) {
         return userRepository.findByUsername(username)
-                .flatMap(user -> accountRepository.findByUserId(user.getId().toString())
-                        .stream().findFirst());
+                .flatMap(user -> accountRepository.findByUserId(user.getId()));
     }
 
     /**
@@ -62,8 +61,7 @@ public class WalletService {
      */
     public List<Transaction> getTransactionsByUsername(String username) {
         return userRepository.findByUsername(username)
-                .flatMap(user -> accountRepository.findByUserId(user.getId().toString())
-                        .stream().findFirst())
+                .flatMap(user -> accountRepository.findByUserId(user.getId()))
                 .map(account -> transactionRepository
                         .findTop20ByFromWalletOrToWalletOrderByCreatedAtDesc(
                                 account.getWalletAddress(), account.getWalletAddress()))
@@ -195,7 +193,7 @@ public class WalletService {
         User currentUser = userRepository.findByUsername(currentUsername)
                 .orElseThrow(() -> new AccessDeniedException("User not found: " + currentUsername));
 
-        if (!fromAccount.getUserId().equals(currentUser.getId().toString())) {
+        if (!fromAccount.getUserId().equals(currentUser.getId())) {
             log.warn("Security Breach Attempt: User '{}' tried to transfer from wallet '{}'",
                     currentUsername, fromAccount.getWalletAddress());
             throw new AccessDeniedException("Unauthorized: You do not own the sender wallet.");
@@ -284,8 +282,7 @@ public class WalletService {
     public Map<String, BigDecimal> getMonthlyStats(String username) {
         User user = userRepository.findByUsername(username)
                 .orElseThrow(() -> new AccessDeniedException("User not found: " + username));
-        Account account = accountRepository.findByUserId(user.getId().toString())
-                .stream().findFirst()
+        Account account = accountRepository.findByUserId(user.getId())
                 .orElseThrow(() -> new AccountNotFoundException("Account not found for user: " + username));
 
         Instant startOfMonth = LocalDate.now().withDayOfMonth(1)

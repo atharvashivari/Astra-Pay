@@ -28,9 +28,9 @@ public interface AccountRepository extends JpaRepository<Account, UUID> {
     Optional<Account> findByWalletAddress(String walletAddress);
 
     /**
-     * Finds accounts by user ID.
+     * Finds account by user ID.
      */
-    List<Account> findByUserId(String userId);
+    Optional<Account> findByUserId(UUID userId);
 
     /**
      * Finds an account by its wallet address and acquires a row-level PESSIMISTIC_WRITE

@@ -47,7 +47,7 @@ public class AuthService {
 
         // Create initial account
         Account account = new Account();
-        account.setUserId(savedUser.getId().toString());
+        account.setUserId(savedUser.getId());
         account.setBalance(BigDecimal.ZERO);
         account.setCurrency("INR");
         account.setStatus(Account.Status.ACTIVE);
@@ -97,8 +97,8 @@ public class AuthService {
         User user = userRepository.findByUsername(username)
                 .orElseThrow(() -> new UsernameNotFoundException("User not found: " + username));
         
-        Account account = accountRepository.findByUserId(user.getId().toString())
-                .stream().findFirst().orElseThrow(() -> new RuntimeException("Account not found"));
+        Account account = accountRepository.findByUserId(user.getId())
+                .orElseThrow(() -> new RuntimeException("Account not found"));
         
         Map<String, Object> response = new HashMap<>();
         response.put("username", user.getUsername());

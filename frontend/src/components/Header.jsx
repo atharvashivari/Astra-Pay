@@ -16,15 +16,15 @@ const Header = ({ title, subtitle }) => {
         <div className="relative flex h-3 w-3">
           {socketConnected && (
             <motion.span 
-              animate={{ scale: [1, 1.5, 1], opacity: [0.5, 1, 0.5] }}
+              animate={{ scale: [1, 2, 1], opacity: [0.3, 0.6, 0.3] }}
               transition={{ repeat: Infinity, duration: 2 }}
-              className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"
+              className="absolute inline-flex h-full w-full rounded-full bg-green-500 opacity-75"
             ></motion.span>
           )}
-          <span className={`relative inline-flex rounded-full h-3 w-3 ${socketConnected ? 'bg-green-500' : 'bg-red-500'}`}></span>
+          <span className={`relative inline-flex rounded-full h-3 w-3 ${socketConnected ? 'bg-green-500 shadow-[0_0_10px_rgba(34,197,94,0.8)]' : 'bg-red-500 shadow-[0_0_10px_rgba(239,68,68,0.5)]'}`}></span>
         </div>
-        <span className="text-[10px] uppercase tracking-widest font-bold text-muted">
-          {socketConnected ? 'Live Connection' : 'Offline'}
+        <span className={`text-[10px] uppercase tracking-widest font-black ${socketConnected ? 'text-green-500' : 'text-red-500'}`}>
+          {socketConnected ? 'Live' : 'Offline'}
         </span>
       </div>
     </header>

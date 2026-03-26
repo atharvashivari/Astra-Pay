@@ -16,9 +16,9 @@ public interface TransactionRepository extends JpaRepository<Transaction, UUID> 
     List<Transaction> findByStatusAndCreatedAtBefore(Transaction.Status status, Instant dateTime);
     List<Transaction> findTop20ByFromWalletOrToWalletOrderByCreatedAtDesc(String fromWallet, String toWallet);
 
-    @Query("SELECT COALESCE(SUM(t.amount), 0) FROM Transaction t WHERE t.toWallet = :wallet AND t.status = com.astrapay.model.Transaction.Status.SUCCESS AND t.createdAt >= :startOfMonth")
+    @Query("SELECT COALESCE(SUM(t.amount), 0) FROM Transaction t WHERE t.toWallet = :wallet AND t.status = 'SUCCESS' AND t.createdAt >= :startOfMonth")
     BigDecimal sumCreditsForMonth(@Param("wallet") String wallet, @Param("startOfMonth") Instant startOfMonth);
 
-    @Query("SELECT COALESCE(SUM(t.amount), 0) FROM Transaction t WHERE t.fromWallet = :wallet AND t.status = com.astrapay.model.Transaction.Status.SUCCESS AND t.createdAt >= :startOfMonth")
+    @Query("SELECT COALESCE(SUM(t.amount), 0) FROM Transaction t WHERE t.fromWallet = :wallet AND t.status = 'SUCCESS' AND t.createdAt >= :startOfMonth")
     BigDecimal sumDebitsForMonth(@Param("wallet") String wallet, @Param("startOfMonth") Instant startOfMonth);
 }
