@@ -28,3 +28,4 @@ docs/todo.md
 *.log
 *.txt
 test-results/
+backend/src/main/resources/application.properties
