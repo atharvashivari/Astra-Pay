@@ -45,8 +45,8 @@ public class UserController {
                     if (profileUpdate.getPhoneNumber() != null) {
                         user.setPhoneNumber(profileUpdate.getPhoneNumber());
                     }
-                    if (profileUpdate.getProfileImage() != null) {
-                        user.setProfileImage(profileUpdate.getProfileImage());
+                    if (profileUpdate.getProfileImageUrl() != null) {
+                        user.setProfileImageUrl(profileUpdate.getProfileImageUrl());
                     }
                     userRepository.save(user);
                     user.setPassword(null);

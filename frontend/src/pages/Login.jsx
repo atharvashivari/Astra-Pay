@@ -82,6 +82,27 @@ const Login = () => {
               </button>
             </div>
           </form>
+
+          <div className="mt-6">
+            <div className="relative">
+              <div className="absolute inset-0 flex items-center">
+                <div className="w-full border-t border-white/10"></div>
+              </div>
+              <div className="relative flex justify-center text-sm">
+                <span className="px-2 bg-surface text-gray-500 uppercase tracking-widest font-bold text-[10px]">Or continue with</span>
+              </div>
+            </div>
+
+            <div className="mt-6">
+              <a
+                href="http://localhost:8081/oauth2/authorization/google"
+                className="w-full inline-flex justify-center py-4 px-4 border border-white/10 rounded-xl shadow-sm bg-black text-sm font-bold text-white hover:bg-white/5 transition-all outline-none"
+              >
+                <img src="https://www.google.com/favicon.ico" className="w-5 h-5 mr-3 grayscale" alt="Google" />
+                Google Account
+              </a>
+            </div>
+          </div>
         </div>
       </div>
     </div>

@@ -1,7 +1,7 @@
 import React from 'react';
 import { useAuth } from '../context/AuthContext';
 import { useNavigate, NavLink } from 'react-router-dom';
-import { LayoutDashboard, ArrowRightLeft, CreditCard, User, LogOut } from 'lucide-react';
+import { LayoutDashboard, ArrowRightLeft, CreditCard, User, LogOut, FileJson } from 'lucide-react';
 import { cn } from '../lib/utils';
 import { motion } from 'framer-motion';
 
@@ -51,6 +51,14 @@ const Sidebar = () => {
         <NavLink to="/profile" className={linkClass}>
           <User size={18} /> Profile
         </NavLink>
+        <a 
+          href="http://localhost:8081/swagger-ui/index.html" 
+          target="_blank" 
+          rel="noopener noreferrer"
+          className="flex items-center gap-3 p-3 rounded-xl transition-all font-medium text-sm text-gray-400 hover:text-white hover:bg-white/5"
+        >
+          <FileJson size={18} /> Developer Docs
+        </a>
       </nav>
 
       <div className="pt-6 border-t border-white/10 mt-auto z-10">

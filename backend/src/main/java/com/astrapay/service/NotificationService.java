@@ -25,16 +25,16 @@ public class NotificationService {
         accountRepository.findByWalletAddress(event.getToWallet())
                 .ifPresent(account -> {
                     String destination = "/topic/wallet/" + account.getUserId();
-                    log.info("Sending SYNC notification to recipient: {}", destination);
-                    messagingTemplate.convertAndSend(destination, "SYNC");
+                    log.info("Sending SYNC_WALLET notification to recipient: {}", destination);
+                    messagingTemplate.convertAndSend(destination, "SYNC_WALLET");
                 });
 
         // Notify Sender (optional but good for real-time balance update)
         accountRepository.findByWalletAddress(event.getFromWallet())
                 .ifPresent(account -> {
                     String destination = "/topic/wallet/" + account.getUserId();
-                    log.info("Sending SYNC notification to sender: {}", destination);
-                    messagingTemplate.convertAndSend(destination, "SYNC");
+                    log.info("Sending SYNC_WALLET notification to sender: {}", destination);
+                    messagingTemplate.convertAndSend(destination, "SYNC_WALLET");
                 });
     }
 }

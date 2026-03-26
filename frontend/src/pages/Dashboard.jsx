@@ -2,6 +2,7 @@ import React from 'react';
 import BalanceDisplay from '../components/BalanceDisplay';
 import TransferForm from '../components/TransferForm';
 import TransactionList from '../components/TransactionList';
+import CardList from '../features/cards/CardList';
 import { motion } from 'framer-motion';
 
 const Dashboard = () => {
@@ -20,8 +21,11 @@ const Dashboard = () => {
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         
         {/* Balance Card - prominent focus */}
-        <div className="lg:col-span-2 flex flex-col min-h-[300px]">
+        <div className="lg:col-span-2 flex flex-col gap-6">
           <BalanceDisplay />
+          <div className="mt-auto">
+             <CardList />
+          </div>
         </div>
 
         {/* Quick Transfer Form */}

@@ -40,13 +40,14 @@ public class CustomOAuth2SuccessHandler extends SimpleUrlAuthenticationSuccessHa
         String picture = oidcUser.getPicture();
 
         User user = userRepository.findByGoogleSub(googleSub)
+                .or(() -> userRepository.findByEmail(email))
                 .orElseGet(() -> {
                     log.info("Creating new user from Google OAuth: {}", email);
                     User newUser = new User();
                     newUser.setGoogleSub(googleSub);
                     newUser.setEmail(email);
                     newUser.setUsername(email.split("@")[0]); // Default username from email
-                    newUser.setProfileImage(picture);
+                    newUser.setProfileImageUrl(picture);
                     newUser.setPassword("OAUTH2_USER"); // Placeholder
                     newUser.setRoles(Collections.singleton("ROLE_USER"));
                     User savedUser = userRepository.save(newUser);

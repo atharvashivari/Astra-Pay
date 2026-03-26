@@ -10,7 +10,7 @@ const ProfilePage = () => {
   const [isEditing, setIsEditing] = useState(false);
   const [editData, setEditData] = useState({
     phoneNumber: user?.phoneNumber || '',
-    profileImage: user?.profileImage || ''
+    profileImageUrl: user?.profileImageUrl || ''
   });
   
   const [settings, setSettings] = useState({
@@ -52,8 +52,8 @@ const ProfilePage = () => {
              
              <div className="relative mx-auto mb-6 w-max">
                 <div className="w-28 h-28 bg-gradient-to-br from-gray-800 to-black rounded-full flex items-center justify-center text-5xl font-black mx-auto text-white border-4 border-white/10 shadow-2xl relative z-10 overflow-hidden">
-                  {user?.profileImage ? (
-                    <img src={user.profileImage} alt="Profile" className="w-full h-full object-cover" />
+                  {user?.profileImageUrl ? (
+                    <img src={user.profileImageUrl} alt="Profile" className="w-full h-full object-cover" />
                   ) : (
                     user?.username?.charAt(0).toUpperCase() || '?'
                   )}
@@ -79,6 +79,14 @@ const ProfilePage = () => {
                    <Smartphone size={14} className="text-white/70" />
                    <span className="text-sm">{user?.phoneNumber || 'No phone set'}</span>
                  </div>
+              </div>
+
+              {/* QR Code Section */}
+              <div className="mt-8 p-4 bg-white/[0.03] rounded-2xl border border-white/5 relative z-10 group/qr">
+                <p className="text-[10px] font-bold text-gray-500 uppercase tracking-[0.2em] mb-3">Your Wallet QR</p>
+                <div className="aspect-square w-32 mx-auto bg-white p-2 rounded-xl border border-white/10 shadow-[0_0_20px_rgba(255,255,255,0.05)] group-hover/qr:shadow-[0_0_30px_rgba(255,255,255,0.1)] transition-all">
+                  <QrCodeDisplay />
+                </div>
               </div>
 
              <div className="mt-8 pt-6 border-t border-white/5 text-left relative z-10 space-y-4">
@@ -210,8 +218,8 @@ const ProfilePage = () => {
                   <input 
                     type="url"
                     placeholder="https://example.com/image.jpg"
-                    value={editData.profileImage}
-                    onChange={(e) => setEditData({...editData, profileImage: e.target.value})}
+                    value={editData.profileImageUrl}
+                    onChange={(e) => setEditData({...editData, profileImageUrl: e.target.value})}
                     className="w-full bg-black/50 border border-white/10 rounded-2xl px-6 py-4 text-white focus:outline-none focus:border-white/30 transition-colors"
                   />
                 </div>
@@ -249,6 +257,25 @@ const ProfilePage = () => {
       </AnimatePresence>
     </div>
   );
+};
+
+const QrCodeDisplay = () => {
+  const [qrCode, setQrCode] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    apiClient.get('/wallet/qr')
+      .then(res => {
+        setQrCode(res.data.qrCode);
+        setLoading(false);
+      })
+      .catch(() => setLoading(false));
+  }, []);
+
+  if (loading) return <div className="w-full h-full flex items-center justify-center bg-gray-100 rounded-lg animate-pulse" />;
+  if (!qrCode) return <div className="w-full h-full flex items-center justify-center bg-gray-100 rounded-lg text-gray-400 text-[8px] uppercase font-bold">Error</div>;
+
+  return <img src={qrCode} alt="Wallet QR" className="w-full h-full object-contain mix-blend-multiply" />;
 };
 
 // Reusable toggle component
