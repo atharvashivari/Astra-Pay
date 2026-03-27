@@ -21,13 +21,47 @@ Astra-Pay is engineered to demonstrate architectural excellence in the fintech s
 - **P2P Transaction Engine:** Asynchronous transfers via Kafka event streams.
 - **Incentive Engine:** Decoupled service for rewards and cashbacks.
 - **Event Sourced Ledger:** Persistent, immutable log of all operations.
-- **Optimistic Concurrency Control:** Version-based locking to prevent race conditions during balance updates.
+- **Pessimistic Locking Strategy:** Prevents race conditions during simultaneous fund transfers using PostgreSQL row-level locks.
 
-## 🏗️ Architecture
-Astra-Pay utilizes modern architectural patterns to ensure high availability and data integrity:
-- **Transactional Outbox Pattern**: Ensures atomicity between database updates and event publishing.
-- **Idempotency Guard**: Redis-backed middleware to guarantee exactly-once processing.
-- **Virtual Threads**: Maximizes throughput for I/O bound operations.
+## 🏗️ Architecture & System Design
+
+Astra-Pay is built on a high-concurrency, event-driven architecture designed for financial integrity.
+
+### Workflow: Funds Transfer
+1. **API Gateway / Filter Layer**: Intercepts requests for basic validation (positive amounts, non-null recipients).
+2. **Idempotency Guard**: Checks Redis for the `X-Idempotency-Key` to prevent double-spending.
+3. **Ledger Service (WalletService)**: 
+    - Acquires **Pessimistic Write Locks** on sender and recipient accounts in a sorted order to prevent deadlocks.
+    - Validates funds and updates balances within a single database transaction.
+4. **Transactional Outbox**: Saves the transaction event to the database and later publishes to Kafka.
+5. **Observability**: Prometheus scrapes the `/actuator/prometheus` endpoint for latency and Kafka lag metrics.
+
+```mermaid
+graph TD
+    User([User]) -->|POST /transfer| API[Wallet Controller]
+    API -->|Check| Redis[(Redis Idempotency)]
+    API -->|Lock & Update| DB[(PostgreSQL)]
+    DB -->|Outbox| Kafka[Kafka Broker]
+    Kafka -->|Process| Incentive[Incentive Service]
+    Actuator[Actuator/Prometheus] -->|Scrape| API
+```
+
+## 📈 Reliability & Observability
+
+### Concurrency Strategy
+Astra-Pay uses **Pessimistic Locking** (`PESSIMISTIC_WRITE`) at the database row level. This ensures that even under extreme concurrency (e.g., thousands of people sending money to one influencer simultaneously), the balance remains consistent and no race conditions occur.
+
+### Integration Testing
+We use **Testcontainers** to spin up ephemeral PostgreSQL and Kafka instances during the build process. This ensures that our integration tests run in a production-like environment.
+- `WalletServiceIntegrationTest`: Verifies concurrent transfers using `ExecutorService` and `CountDownLatch`.
+
+### Metrics & Monitoring
+The system exports real-time metrics via Micrometer and Spring Boot Actuator:
+- **Endpoint**: `/actuator/prometheus`
+- **Key Metrics**:
+    - `http_server_requests_seconds_sum`: API latency histograms.
+    - `kafka_consumer_lag`: Real-time monitoring of event processing delay.
+    - `jvm_threads_live_threads`: Monitoring Virtual Thread performance.
 
 ## 🚀 Getting Started
 
@@ -72,7 +106,7 @@ npm run dev
 
 ## 🌟 Key Highlights
 - **Atomic Transfers**: Guaranteed state consistency using Spring Data JPA and Postgres ACID transactions.
-- **Race Condition Immunity**: Implements version-based Optimistic Locking on all wallet operations.
+- **Race Condition Immunity**: Implements row-level Pessimistic Locking on all wallet operations.
 - **Idempotency Shield**: Custom Redis-backed middleware ensuring no transaction is processed twice.
 - **Loom Powered**: Utilizes Virtual Threads to handle thousands of concurrent payment requests with minimal overhead.
 
