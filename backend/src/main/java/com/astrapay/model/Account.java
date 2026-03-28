@@ -3,6 +3,7 @@ package com.astrapay.model;
 import jakarta.persistence.*;
 import org.hibernate.annotations.Check;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import java.math.BigDecimal;
@@ -12,6 +13,7 @@ import java.util.UUID;
 @Table(name = "accounts")
 @Check(constraints = "balance >= 0")
 @Data
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 public class Account {

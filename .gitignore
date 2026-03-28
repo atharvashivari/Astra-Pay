@@ -29,3 +29,11 @@ docs/todo.md
 *.txt
 test-results/
 backend/src/main/resources/application.properties
+
+# Load Testing & Temporary
+k6.exe
+*.log
+*.txt
+*dump.txt
+test-results/
+.vscode/
