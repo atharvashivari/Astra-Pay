@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { useAuth } from '../context/AuthContext';
 import { CreditCard, Eye, EyeOff, Copy, Lock, ShieldCheck, Power } from 'lucide-react';
 import toast from 'react-hot-toast';
+import apiClient from '../api/axios';
 
 const CardsPage = () => {
   const { user } = useAuth();

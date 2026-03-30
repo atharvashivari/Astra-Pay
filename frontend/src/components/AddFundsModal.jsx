@@ -120,9 +120,33 @@ const AddFundsModal = ({ isOpen, onClose }) => {
       rzp.open();
     } catch (error) {
        console.error(error);
-       toast.error('Failed to initiate payment.');
+       const errorMessage = error.response?.data?.message || 'Failed to initiate payment.';
+       toast.error(errorMessage);
+       
+       // If it's a 400/500 from create-order, it might be due to missing credentials
+       // in dev, we show a mock success option.
+       if (import.meta.env.DEV) {
+         toast("Tip: You can use the 'Simulate' button below if your Razorpay keys are not yet configured.", { icon: 'ℹ️', duration: 4000 });
+       }
     } finally {
       setIsProcessing(false);
+    }
+  };
+
+  const handleMockSuccess = async () => {
+    if (!amount || Number(amount) <= 0) return;
+    setIsProcessing(true);
+    try {
+        await apiClient.post('/payments/mock-success', { amount: Number(amount) });
+        toast.success(`Mock Payment of ₹${amount} successful!`);
+        queryClient.invalidateQueries({ queryKey: ['balance'] });
+        queryClient.invalidateQueries({ queryKey: ['transactions'] });
+        onClose();
+        setAmount('');
+    } catch (error) {
+        toast.error("Mock payment failed.");
+    } finally {
+        setIsProcessing(false);
     }
   };
 
@@ -186,6 +210,17 @@ const AddFundsModal = ({ isOpen, onClose }) => {
               >
                 {isProcessing ? 'Connecting...' : 'Proceed to Pay'}
               </motion.button>
+
+              {import.meta.env.DEV && (
+                <button
+                  type="button"
+                  onClick={handleMockSuccess}
+                  disabled={isProcessing || !amount || Number(amount) <= 0}
+                  className="w-full mt-4 py-3 border border-white/10 rounded-xl text-gray-400 font-bold hover:bg-white/5 transition-all text-xs uppercase tracking-widest disabled:opacity-30"
+                >
+                  Simulate Success (Dev Mode)
+                </button>
+              )}
               
               <div className="flex items-center justify-center gap-2 text-gray-500 text-xs mt-4">
                 <ShieldCheck size={14} className="text-green-500" />

@@ -11,6 +11,7 @@ import CardsPage from './pages/CardsPage';
 import Profile from './pages/Profile';
 import Login from './pages/Login';
 import Register from './pages/Register';
+import OauthCallback from './pages/OauthCallback';
 import { Toaster } from 'react-hot-toast';
 
 const queryClient = new QueryClient();
@@ -22,6 +23,7 @@ const AnimatedRoutes = () => {
       <Routes location={location} key={location.pathname}>
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/oauth-callback" element={<OauthCallback />} />
         
         <Route element={<ProtectedRoute />}>
           <Route path="/" element={<Layout title="Overview" subtitle="Welcome back. Here is your financial summary."><Dashboard /></Layout>} />

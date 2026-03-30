@@ -9,9 +9,9 @@ import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
-import com.razorpay.Payment;
 import com.razorpay.Utils;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Value;
 
 import java.math.BigDecimal;
 
@@ -22,6 +22,9 @@ public class PaymentService {
 
     @Value("${razorpay.key.secret}")
     private String keySecret;
+
+    @Value("${razorpay.key.id}")
+    private String keyId;
 
     private final WalletService walletService;
     private final RazorpayClient razorpayClient;
@@ -38,11 +41,19 @@ public class PaymentService {
             notes.put("username", username);
             orderRequest.put("notes", notes);
 
+            if ("PLACEHOLDER".equals(keyId)) {
+                log.warn("Razorpay Key ID is still set to PLACEHOLDER. Payment initiation will fail.");
+                throw new RuntimeException("Razorpay configuration is missing. Please set RAZORPAY_KEY_ID environment variable.");
+            }
+            
             Order order = razorpayClient.orders.create(orderRequest);
             return order.get("id");
         } catch (RazorpayException e) {
-            log.error("Razorpay Error: ", e);
-            throw new RuntimeException("Failed to create Razorpay Order");
+            log.error("Razorpay API Error: {}", e.getMessage());
+            throw new RuntimeException("Razorpay API Error: " + e.getMessage());
+        } catch (Exception e) {
+            log.error("Failed to create Razorpay Order: ", e);
+            throw new RuntimeException("Failed to initiate payment: " + e.getMessage());
         }
     }
 
